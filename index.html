@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bilan Respiratoire Breathavia</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --charcoal:#2B2B2B;
+  --gold:#C9A84C;
+  --gold-light:#F0DFA8;
+  --cream:#FAF6EE;
+  --dusty-blue:#BFD4D8;
+  --dusty-blue-light:#E6F0F2;
+  --mid:#6B6B6B;
+  --border:#D9CFC0;
+  --white:#FFFFFF;
+  --section-bg:#F4EFE6;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);font-size:15px;line-height:1.6;min-height:100vh;}
+.page-wrap{max-width:720px;margin:0 auto;padding:0 0 80px;}
+header{background:var(--charcoal);padding:40px 40px 36px;text-align:center;}
+.logo-mark{width:48px;height:48px;margin:0 auto 16px;opacity:.9;}
+header h1{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:var(--gold);letter-spacing:.04em;margin-bottom:4px;}
+header .tagline{font-size:12px;color:var(--dusty-blue);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
+.intro-box{background:rgba(191,212,216,.12);border:1px solid rgba(191,212,216,.3);border-radius:6px;padding:16px 20px;text-align:left;color:#d6cfc5;font-size:13.5px;line-height:1.65;}
+.intro-box strong{color:var(--gold-light);}
+.section{background:var(--white);border-bottom:1px solid var(--border);padding:28px 40px;}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.section-num{width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--white);font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--charcoal);}
+.section-subtitle{font-size:12px;color:var(--mid);margin-top:1px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13.5px;font-weight:500;color:var(--charcoal);margin-bottom:6px;}
+.field label em{display:block;font-style:italic;font-weight:400;font-size:12px;color:var(--mid);margin-top:1px;}
+.field input[type=text],.field input[type=email],.field input[type=number],.field textarea{width:100%;padding:10px 13px;border:1px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--charcoal);background:var(--cream);outline:none;transition:border-color .18s;}
+.field input:focus,.field textarea:focus{border-color:var(--gold);}
+.field textarea{resize:vertical;min-height:70px;}
+.radio-group{display:flex;flex-wrap:wrap;gap:8px;}
+.radio-group label{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:400;cursor:pointer;margin:0;padding:7px 13px;border:1px solid var(--border);border-radius:20px;background:var(--cream);transition:all .15s;}
+.radio-group label em{font-size:11px;color:var(--mid);font-style:italic;display:block;margin-top:1px;}
+.radio-group label:hover{border-color:var(--gold);background:var(--gold-light);}
+.radio-group input[type=radio]{accent-color:var(--gold);width:14px;height:14px;margin:0;}
+.radio-group label:has(input:checked){border-color:var(--gold);background:var(--gold-light);}
+.freq-table{width:100%;border-collapse:collapse;font-size:13px;}
+.freq-table th{font-weight:500;font-size:11px;color:var(--mid);padding:7px 8px;text-align:center;border-bottom:1px solid var(--border);background:var(--section-bg);}
+.freq-table th:first-child{text-align:left;}
+.freq-table td{padding:9px 8px;border-bottom:1px solid #ede8df;vertical-align:middle;}
+.freq-table td:first-child{font-size:13px;color:var(--charcoal);}
+.freq-table td:not(:first-child){text-align:center;}
+.freq-table tr:last-child td{border-bottom:none;}
+.freq-table input[type=radio]{accent-color:var(--gold);width:15px;height:15px;cursor:pointer;}
+.freq-table .en{display:block;font-size:11px;font-style:italic;color:var(--mid);margin-top:2px;}
+.sev-table{width:100%;border-collapse:collapse;font-size:13px;}
+.sev-table th{font-weight:500;font-size:11px;color:var(--mid);padding:7px 8px;text-align:center;border-bottom:1px solid var(--border);background:var(--section-bg);}
+.sev-table th:first-child{text-align:left;}
+.sev-table td{padding:8px 8px;border-bottom:1px solid #ede8df;vertical-align:middle;font-size:13px;}
+.sev-table td:not(:first-child){text-align:center;}
+.sev-table tr:last-child td{border-bottom:none;}
+.sev-table input[type=radio]{accent-color:var(--gold);width:15px;height:15px;cursor:pointer;}
+.sev-table .en{display:block;font-size:11px;font-style:italic;color:var(--mid);margin-top:2px;}
+.score-row td{font-weight:500;color:var(--charcoal);background:var(--dusty-blue-light);}
+.cp-box{background:var(--dusty-blue-light);border:1px solid var(--dusty-blue);border-radius:8px;padding:18px 22px;}
+.cp-box p{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:10px;}
+.cp-protocol{background:var(--white);border-radius:5px;padding:12px 16px;font-size:12.5px;color:var(--charcoal);line-height:1.7;border:1px solid var(--border);margin-bottom:12px;}
+.cp-protocol strong{color:var(--gold);}
+.cp-input-row{display:flex;align-items:center;gap:14px;}
+.cp-input-row input{width:90px;padding:10px 13px;border:1px solid var(--border);border-radius:5px;font-size:20px;font-weight:500;text-align:center;background:var(--cream);color:var(--charcoal);font-family:'DM Sans',sans-serif;outline:none;}
+.cp-input-row input:focus{border-color:var(--gold);}
+.cp-scale{margin-top:12px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.cp-zone{border-radius:5px;padding:7px 8px;text-align:center;font-size:11px;line-height:1.4;}
+.cp-zone strong{display:block;font-size:14px;margin-bottom:2px;}
+.z-red{background:#FDECEA;color:#8B2E2E;}
+.z-orange{background:#FEF3E2;color:#7A4A0A;}
+.z-yellow{background:#FEFCE8;color:#6B5500;}
+.z-green{background:#EDFBF3;color:#1A5C38;}
+.sebq-item{background:var(--section-bg);border-radius:6px;padding:12px 14px;margin-bottom:8px;}
+.sebq-item label{font-size:13px;font-weight:400;margin-bottom:8px;display:block;color:var(--charcoal);}
+.sebq-item label em{display:block;font-size:11.5px;color:var(--mid);margin-top:2px;font-style:italic;}
+.slider-wrap{display:flex;align-items:center;gap:10px;}
+.slider-wrap input[type=range]{flex:1;accent-color:var(--gold);height:4px;cursor:pointer;}
+.slider-val{min-width:28px;text-align:right;font-weight:500;font-size:14px;color:var(--gold);}
+.slider-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--mid);margin-top:3px;}
+.req{color:var(--gold);margin-left:2px;}
+.hint{font-size:12px;color:var(--mid);margin-top:4px;}
+.submit-section{background:var(--charcoal);padding:32px 40px;text-align:center;}
+.btn-submit{background:var(--gold);color:var(--charcoal);border:none;border-radius:4px;padding:14px 48px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;letter-spacing:.06em;cursor:pointer;transition:opacity .18s;}
+.btn-submit:hover{opacity:.88;}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;}
+.submit-note{color:var(--dusty-blue);font-size:12px;margin-top:10px;}
+footer{background:#222;padding:20px 40px;text-align:center;}
+footer p{font-size:10px;color:#7a7060;line-height:1.8;}
+@media(max-width:580px){
+  .section{padding:20px 18px;}
+  header{padding:28px 20px 24px;}
+  .cp-scale{grid-template-columns:1fr 1fr;}
+  .freq-table th,.freq-table td{padding:7px 4px;font-size:11.5px;}
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<header>
+  <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="24" cy="24" r="20" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity=".5"/>
+    <path d="M24 8 C10 16 10 32 24 40 C38 32 38 16 24 8Z" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
+    <circle cx="24" cy="24" r="3" fill="#C9A84C" opacity=".9"/>
+  </svg>
+  <h1>Bilan Respiratoire Breathavia</h1>
+  <div class="tagline">Breathavia Respiratory Assessment · Rééducation Respiratoire</div>
+  <div class="intro-box">
+    <strong>Évaluez votre profil respiratoire en 5 minutes.</strong> Ce bilan gratuit et abrégé vous donnera un premier aperçu de votre fonctionnement respiratoire selon les 3 piliers Breathavia: Respiration, Mouvement et Conscience. Vous recevrez vos résultats par courriel immédiatement.<br><br>
+    <em style="color:#b0aaa2;">Assess your respiratory profile in 5 minutes. This free abbreviated assessment will give you a first overview of your breathing function across the 3 Breathavia pillars: Breathing, Movement and Awareness.</em><br><br>
+    <span style="color:#C9A84C;font-size:12px;">⚠ Version abrégée · Abbreviated version — Un bilan complet est disponible lors d'une séance individuelle. / A complete assessment is available during an individual session.</span>
+  </div>
+</header>
+
+<form id="bilan-form" action="javascript:void(0);" method="POST" novalidate>
+<input type="hidden" name="Score_Nijmegen" id="hidden_nq_score" value="">
+<input type="hidden" name="type_formulaire" value="bilan_public">
+
+<!-- SECTION 1 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div>
+      <div class="section-title">Informations personnelles</div>
+      <div class="section-subtitle">Personal information</div>
+    </div>
+  </div>
+  <div class="field">
+    <label for="nom">Nom complet <span class="req">*</span><em>Full name</em></label>
+    <input type="text" id="nom" name="nom" required placeholder="Prénom Nom / First Last">
+  </div>
+  <div class="field">
+    <label for="email">Adresse courriel <span class="req">*</span><em>Email address</em></label>
+    <input type="email" id="email" name="email" required placeholder="vous@exemple.com">
+  </div>
+  <div class="field">
+    <label for="motif">Qu'est-ce qui vous amène à faire ce bilan?<em>What brings you to take this assessment?</em></label>
+    <textarea id="motif" name="motif" rows="2" placeholder="Ex: stress, fatigue, sommeil, performance sportive…"></textarea>
+  </div>
+  <div class="field">
+    <label>Quelle situation décrit le mieux ce que vous vivez en ce moment? <span class="req">*</span><em>Which best describes your current situation?</em></label>
+    <div class="radio-group" style="flex-direction:column;gap:6px;">
+      <label><input type="radio" name="situation" value="stress_surcharge"><span>Stress chronique et surcharge mentale<em>Chronic stress and mental overload</em></span></label>
+      <label><input type="radio" name="situation" value="fatigue"><span>Fatigue persistante malgré le repos<em>Persistent fatigue despite rest</em></span></label>
+      <label><input type="radio" name="situation" value="anxiete"><span>Anxiété ou attaques de panique<em>Anxiety or panic attacks</em></span></label>
+      <label><input type="radio" name="situation" value="sommeil"><span>Troubles du sommeil<em>Sleep disturbances</em></span></label>
+      <label><input type="radio" name="situation" value="performance"><span>Performance sportive à améliorer<em>Sports performance improvement</em></span></label>
+      <label><input type="radio" name="situation" value="douleurs"><span>Douleurs chroniques ou tension corporelle<em>Chronic pain or body tension</em></span></label>
+      <label><input type="radio" name="situation" value="curiosite"><span>Simplement curieux(se) de connaître mon profil<em>Simply curious about my profile</em></span></label>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div>
+      <div class="section-title">Pause Contrôle</div>
+      <div class="section-subtitle">Control Pause · Steps Test</div>
+    </div>
+  </div>
+  <div class="cp-box">
+    <p>La Pause Contrôle mesure votre tolérance fonctionnelle au CO₂ et reflète votre patron respiratoire de base.<br>
+    <em style="font-size:12px;">The Control Pause measures your functional CO₂ tolerance and reflects your baseline breathing pattern.</em></p>
+    <div class="cp-protocol">
+      <strong>Protocole / Protocol:</strong><br>
+      1. Respirez normalement par le nez 1–2 minutes. <em style="font-size:11.5px;color:var(--mid)">Breathe normally through your nose for 1–2 minutes.</em><br>
+      2. Après une expiration normale, pincez le nez. <em style="font-size:11.5px;color:var(--mid)">After a normal exhale, pinch your nose.</em><br>
+      3. Comptez jusqu'au premier besoin net de respirer (pas au maximum). <em style="font-size:11.5px;color:var(--mid)">Count until the first definite urge to breathe — not maximum.</em><br>
+      4. Relâchez et reprenez calmement. <em style="font-size:11.5px;color:var(--mid)">Release and resume calmly.</em>
+    </div>
+    <div class="cp-input-row">
+      <input type="number" id="cp_score" name="cp_score" min="0" max="120" placeholder="—">
+      <span style="font-size:13px;color:var(--mid);">secondes / seconds</span>
+    </div>
+    <div class="cp-scale">
+      <div class="cp-zone z-red"><strong>&lt;10s</strong>Dysfonction sévère<br><em style="font-size:10px;">Severe</em></div>
+      <div class="cp-zone z-orange"><strong>10–20s</strong>Dysfonction modérée<br><em style="font-size:10px;">Moderate</em></div>
+      <div class="cp-zone z-yellow"><strong>20–40s</strong>Légère / Mild</div>
+      <div class="cp-zone z-green"><strong>&gt;40s</strong>Optimal</div>
+    </div>
+    <div class="hint" style="margin-top:10px;">Si vous n'avez pas encore fait le test, laissez vide.<br><em>If you haven't done the test yet, leave blank.</em></div>
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div>
+      <div class="section-title">Habitudes respiratoires</div>
+      <div class="section-subtitle">Breathing habits</div>
+    </div>
+  </div>
+  <table class="freq-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Jamais<br><em style="font-weight:400;font-style:italic;font-size:10px;">Never</em></th>
+        <th>Parfois<br><em style="font-weight:400;font-style:italic;font-size:10px;">Sometimes</em></th>
+        <th>Souvent<br><em style="font-weight:400;font-style:italic;font-size:10px;">Often</em></th>
+        <th>Très svt<br><em style="font-weight:400;font-style:italic;font-size:10px;">Very often</em></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Stress pendant la journée<span class="en">Stressed during the day</span></td><td><input type="radio" name="stress" value="0"></td><td><input type="radio" name="stress" value="1"></td><td><input type="radio" name="stress" value="2"></td><td><input type="radio" name="stress" value="3"></td></tr>
+      <tr><td>Bâillements fréquents<span class="en">Frequent yawning</span></td><td><input type="radio" name="baillements" value="0"></td><td><input type="radio" name="baillements" value="1"></td><td><input type="radio" name="baillements" value="2"></td><td><input type="radio" name="baillements" value="3"></td></tr>
+      <tr><td>Respiration buccale la nuit<span class="en">Mouth breathing at night</span></td><td><input type="radio" name="bouche_nuit" value="0"></td><td><input type="radio" name="bouche_nuit" value="1"></td><td><input type="radio" name="bouche_nuit" value="2"></td><td><input type="radio" name="bouche_nuit" value="3"></td></tr>
+      <tr><td>Mains ou pieds froids<span class="en">Cold hands or feet</span></td><td><input type="radio" name="mains_froids" value="0"></td><td><input type="radio" name="mains_froids" value="1"></td><td><input type="radio" name="mains_froids" value="2"></td><td><input type="radio" name="mains_froids" value="3"></td></tr>
+    </tbody>
+  </table>
+  <div class="field" style="margin-top:16px;">
+    <label>Heures d'exercice physique par semaine<em>Hours of physical exercise per week</em></label>
+    <div class="radio-group">
+      <label><input type="radio" name="exercice" value="moins_1h"><span>&lt;1h</span></label>
+      <label><input type="radio" name="exercice" value="1-2h"><span>1–2h</span></label>
+      <label><input type="radio" name="exercice" value="2-3h"><span>2–3h</span></label>
+      <label><input type="radio" name="exercice" value="3-4h"><span>3–4h</span></label>
+      <label><input type="radio" name="exercice" value="4-5h"><span>4–5h</span></label>
+      <label><input type="radio" name="exercice" value="5h+"><span>5h+</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4 — Nijmegen abrégé (8 items) -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div>
+      <div class="section-title">Signes respiratoires</div>
+      <div class="section-subtitle">Respiratory signs — Nijmegen (version abrégée / short form)</div>
+    </div>
+  </div>
+  <table class="sev-table">
+    <thead>
+      <tr>
+        <th style="text-align:left;">Symptôme / Symptom</th>
+        <th>Jamais<br><small>0</small></th>
+        <th>Rarement<br><small>1</small></th>
+        <th>Parfois<br><small>2</small></th>
+        <th>Souvent<br><small>3</small></th>
+        <th>Très svt<br><small>4</small></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Respiration rapide ou profonde<span class="en">Fast or deep breathing</span></td><td><input type="radio" name="nq6" value="0"></td><td><input type="radio" name="nq6" value="1"></td><td><input type="radio" name="nq6" value="2"></td><td><input type="radio" name="nq6" value="3"></td><td><input type="radio" name="nq6" value="4"></td></tr>
+      <tr><td>Manque de souffle<span class="en">Shortness of breath</span></td><td><input type="radio" name="nq7" value="0"></td><td><input type="radio" name="nq7" value="1"></td><td><input type="radio" name="nq7" value="2"></td><td><input type="radio" name="nq7" value="3"></td><td><input type="radio" name="nq7" value="4"></td></tr>
+      <tr><td>Oppression thoracique<span class="en">Tightness in the chest</span></td><td><input type="radio" name="nq8" value="0"></td><td><input type="radio" name="nq8" value="1"></td><td><input type="radio" name="nq8" value="2"></td><td><input type="radio" name="nq8" value="3"></td><td><input type="radio" name="nq8" value="4"></td></tr>
+      <tr><td>Étourdissements<span class="en">Dizzy spells</span></td><td><input type="radio" name="nq4" value="0"></td><td><input type="radio" name="nq4" value="1"></td><td><input type="radio" name="nq4" value="2"></td><td><input type="radio" name="nq4" value="3"></td><td><input type="radio" name="nq4" value="4"></td></tr>
+      <tr><td>Fourmillements aux doigts<span class="en">Tingling fingers</span></td><td><input type="radio" name="nq10" value="0"></td><td><input type="radio" name="nq10" value="1"></td><td><input type="radio" name="nq10" value="2"></td><td><input type="radio" name="nq10" value="3"></td><td><input type="radio" name="nq10" value="4"></td></tr>
+      <tr><td>Sensation de tension<span class="en">Feeling tense</span></td><td><input type="radio" name="nq2" value="0"></td><td><input type="radio" name="nq2" value="1"></td><td><input type="radio" name="nq2" value="2"></td><td><input type="radio" name="nq2" value="3"></td><td><input type="radio" name="nq2" value="4"></td></tr>
+      <tr><td>Palpitations<span class="en">Thumping of the heart</span></td><td><input type="radio" name="nq15" value="0"></td><td><input type="radio" name="nq15" value="1"></td><td><input type="radio" name="nq15" value="2"></td><td><input type="radio" name="nq15" value="3"></td><td><input type="radio" name="nq15" value="4"></td></tr>
+      <tr><td>Sentiment d'anxiété<span class="en">Feeling of anxiety</span></td><td><input type="radio" name="nq16" value="0"></td><td><input type="radio" name="nq16" value="1"></td><td><input type="radio" name="nq16" value="2"></td><td><input type="radio" name="nq16" value="3"></td><td><input type="radio" name="nq16" value="4"></td></tr>
+      <tr class="score-row">
+        <td><strong>Score / Total (max 32)</strong></td>
+        <td colspan="5" style="text-align:center;font-size:16px;" id="nq-score">—</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 5 — Symptômes -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div>
+      <div class="section-title">Symptômes actuels</div>
+      <div class="section-subtitle">Current symptoms — 0 = absent · 1 = léger · 2 = modéré · 3 = sévère</div>
+    </div>
+  </div>
+  <table class="sev-table">
+    <thead>
+      <tr><th style="text-align:left;">Symptôme / Symptom</th><th>0</th><th>1</th><th>2</th><th>3</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Fatigue / Tiredness<span class="en"></span></td><td><input type="radio" name="s_fatigue" value="0"></td><td><input type="radio" name="s_fatigue" value="1"></td><td><input type="radio" name="s_fatigue" value="2"></td><td><input type="radio" name="s_fatigue" value="3"></td></tr>
+      <tr><td>Anxiété / Anxiety</td><td><input type="radio" name="s_anxiete" value="0"></td><td><input type="radio" name="s_anxiete" value="1"></td><td><input type="radio" name="s_anxiete" value="2"></td><td><input type="radio" name="s_anxiete" value="3"></td></tr>
+      <tr><td>Insomnie / Broken sleep</td><td><input type="radio" name="s_insomnie" value="0"></td><td><input type="radio" name="s_insomnie" value="1"></td><td><input type="radio" name="s_insomnie" value="2"></td><td><input type="radio" name="s_insomnie" value="3"></td></tr>
+      <tr><td>Essoufflement au repos<span class="en">Breathlessness at rest</span></td><td><input type="radio" name="s_essouf" value="0"></td><td><input type="radio" name="s_essouf" value="1"></td><td><input type="radio" name="s_essouf" value="2"></td><td><input type="radio" name="s_essouf" value="3"></td></tr>
+      <tr><td>Douleurs musculaires<span class="en">Achy muscles</span></td><td><input type="radio" name="s_muscles" value="0"></td><td><input type="radio" name="s_muscles" value="1"></td><td><input type="radio" name="s_muscles" value="2"></td><td><input type="radio" name="s_muscles" value="3"></td></tr>
+      <tr><td>Stress perçu élevé<span class="en">High perceived stress</span></td><td><input type="radio" name="s_stress" value="0"></td><td><input type="radio" name="s_stress" value="1"></td><td><input type="radio" name="s_stress" value="2"></td><td><input type="radio" name="s_stress" value="3"></td></tr>
+      <tr><td>Difficultés de concentration<span class="en">Poor concentration</span></td><td><input type="radio" name="s_conc" value="0"></td><td><input type="radio" name="s_conc" value="1"></td><td><input type="radio" name="s_conc" value="2"></td><td><input type="radio" name="s_conc" value="3"></td></tr>
+      <tr><td>Maux de tête / Headaches</td><td><input type="radio" name="s_tete" value="0"></td><td><input type="radio" name="s_tete" value="1"></td><td><input type="radio" name="s_tete" value="2"></td><td><input type="radio" name="s_tete" value="3"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 6 — PBM-S (1 slider par dimension) -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <div>
+      <div class="section-title">Votre rapport à la respiration</div>
+      <div class="section-subtitle">Your relationship with breathing — PBM-S (Darkins, 2024)</div>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--mid);margin-bottom:14px;">Notez votre accord de 0 à 100. / Rate your agreement from 0 to 100.</p>
+
+  <div class="sebq-item">
+    <label>Je peux contrôler efficacement ma respiration lorsque c'est utile.<em>I can effectively control my breathing when that's helpful.</em></label>
+    <div class="slider-wrap">
+      <span style="font-size:11px;color:var(--mid);">0</span>
+      <input type="range" min="0" max="100" value="50" name="pbm2" oninput="this.nextElementSibling.textContent=this.value">
+      <span class="slider-val">50</span>
+    </div>
+    <div class="slider-labels"><span>Pas du tout / Not at all</span><span>Totalement / Completely</span></div>
+  </div>
+
+  <div class="sebq-item">
+    <label>Ma respiration est habituellement sans effort.<em>My breathing is usually effortless.</em></label>
+    <div class="slider-wrap">
+      <span style="font-size:11px;color:var(--mid);">0</span>
+      <input type="range" min="0" max="100" value="50" name="pbm4" oninput="this.nextElementSibling.textContent=this.value">
+      <span class="slider-val">50</span>
+    </div>
+    <div class="slider-labels"><span>Pas du tout / Not at all</span><span>Totalement / Completely</span></div>
+  </div>
+
+  <div class="sebq-item">
+    <label>Être attentif(ve) à ma respiration enrichit ma vie.<em>Being aware of my breath benefits my life.</em></label>
+    <div class="slider-wrap">
+      <span style="font-size:11px;color:var(--mid);">0</span>
+      <input type="range" min="0" max="100" value="50" name="pbm9" oninput="this.nextElementSibling.textContent=this.value">
+      <span class="slider-val">50</span>
+    </div>
+    <div class="slider-labels"><span>Pas du tout / Not at all</span><span>Totalement / Completely</span></div>
+  </div>
+</div>
+
+<!-- SECTION 7 — Consentement simple -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <div>
+      <div class="section-title">Consentement</div>
+      <div class="section-subtitle">Consent</div>
+    </div>
+  </div>
+  <div class="field">
+    <label style="display:flex;align-items:flex-start;gap:10px;font-weight:400;cursor:pointer;">
+      <input type="checkbox" id="consent_check" required style="margin-top:3px;accent-color:var(--gold);width:16px;height:16px;flex-shrink:0;">
+      <span style="font-size:13.5px;">Je comprends que ce bilan est une évaluation indicative et non un diagnostic médical. Je consens à recevoir mes résultats par courriel. <span class="req">*</span><br>
+      <em style="font-size:12px;color:var(--mid);">I understand this assessment is indicative and not a medical diagnosis. I consent to receive my results by email.</em></span>
+    </label>
+  </div>
+</div>
+
+<!-- SUBMIT -->
+<div class="submit-section">
+  <button type="submit" class="btn-submit" id="submit-btn">Recevoir mon bilan · Get my assessment</button>
+  <div class="submit-note">Vos résultats vous seront envoyés à l'adresse courriel fournie · Results will be sent to the email address provided</div>
+</div>
+
+</form>
+
+<!-- MERCI -->
+<div id="merci-section" style="display:none;background:var(--charcoal);padding:60px 40px;text-align:center;">
+  <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:52px;height:52px;margin:0 auto 18px;display:block;">
+    <circle cx="24" cy="24" r="20" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity=".4"/>
+    <path d="M14 24l7 7 13-13" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:var(--gold);margin-bottom:6px;">Merci!</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--dusty-blue);margin-bottom:22px;">Thank you!</div>
+  <div style="color:#d6cfc5;font-size:14px;line-height:1.9;max-width:480px;margin:0 auto;">
+    Votre bilan Breathavia vous sera envoyé par courriel dans quelques instants.<br><br>
+    <em style="color:#a09888;font-size:13px;">Your Breathavia assessment will be sent to your email shortly.</em>
+  </div>
+  <div style="margin-top:28px;padding-top:22px;border-top:1px solid rgba(201,168,76,.2);">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;">Breathavia</div>
+    <div style="font-size:11px;color:#6b6358;letter-spacing:.1em;">Rééducation Respiratoire · Respiratory Retraining</div>
+  </div>
+</div>
+
+<footer>
+  <p>
+    Nijmegen Questionnaire — Van Dixhoorn &amp; Duivenvoorden (1985)<br>
+    PBM-S — Darkins, R.J. (2024). Australian Catholic University.<br>
+    Control Pause — McKeown, P. (2015). The Oxygen Advantage.<br><br>
+    <span style="color:#C9A84C;">© Breathavia · hello@breathavia.com · breathavia.com</span>
+  </p>
+</footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+// Score Nijmegen (8 items, max 32)
+function calcNijmegen(){
+  const items=['nq2','nq4','nq6','nq7','nq8','nq10','nq15','nq16'];
+  let total=0,filled=0;
+  items.forEach(function(name){
+    const sel=document.querySelector('input[name="'+name+'"]:checked');
+    if(sel){total+=parseInt(sel.value);filled++;}
+  });
+  const el=document.getElementById('nq-score');
+  if(filled===0){el.textContent='—';document.getElementById('hidden_nq_score').value='';return;}
+  el.textContent=total+' / 32';
+  el.style.color=total>11?'#8B2E2E':'#1A5C38';
+  document.getElementById('hidden_nq_score').value=total+' / 32';
+}
+document.querySelectorAll('input[name^="nq"]').forEach(function(r){r.addEventListener('change',calcNijmegen);});
+
+// Date locale
+const dateAujourdhui=new Date();
+const yyyy=dateAujourdhui.getFullYear();
+const mm=String(dateAujourdhui.getMonth()+1).padStart(2,'0');
+const dd=String(dateAujourdhui.getDate()).padStart(2,'0');
+
+// Submit
+document.getElementById('bilan-form').addEventListener('submit',async function(e){
+  e.preventDefault();
+  if(!document.getElementById('consent_check').checked){
+    alert('Veuillez cocher la case de consentement.\nPlease check the consent box.');
+    return;
+  }
+  const btn=document.getElementById('submit-btn');
+  btn.textContent='Envoi en cours… / Sending…';
+  btn.disabled=true;
+
+  calcNijmegen();
+
+  const formData=new FormData(document.getElementById('bilan-form'));
+  const data={};
+  formData.forEach(function(v,k){
+    if(data[k]){data[k]=data[k]+', '+v;}
+    else{data[k]=v;}
+  });
+  data['Score_Nijmegen']=document.getElementById('hidden_nq_score').value||'—';
+  data['date_soumission']=yyyy+'-'+mm+'-'+dd;
+
+  try{
+    fetch('APPS_SCRIPT_URL_BILAN',{
+      method:'POST',
+      mode:'no-cors',
+      body:JSON.stringify(data),
+      headers:{'Content-Type':'application/json'}
+    });
+  }catch(err){console.error('Submit error:',err);}
+
+  document.getElementById('bilan-form').style.display='none';
+  document.getElementById('merci-section').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
