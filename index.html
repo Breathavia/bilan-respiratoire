@@ -144,16 +144,17 @@ footer p{font-size:10px;color:#7a7060;line-height:1.8;}
     <textarea id="motif" name="motif" rows="2" placeholder="Ex: stress, fatigue, sommeil, performance sportive…"></textarea>
   </div>
   <div class="field">
-    <label>Quelle situation décrit le mieux ce que vous vivez en ce moment? <span class="req">*</span><em>Which best describes your current situation?</em></label>
-    <div class="radio-group" style="flex-direction:column;gap:6px;">
-      <label><input type="radio" name="situation" value="stress_surcharge"><span>Stress chronique et surcharge mentale<em>Chronic stress and mental overload</em></span></label>
-      <label><input type="radio" name="situation" value="fatigue"><span>Fatigue persistante malgré le repos<em>Persistent fatigue despite rest</em></span></label>
-      <label><input type="radio" name="situation" value="anxiete"><span>Anxiété ou attaques de panique<em>Anxiety or panic attacks</em></span></label>
-      <label><input type="radio" name="situation" value="sommeil"><span>Troubles du sommeil<em>Sleep disturbances</em></span></label>
-      <label><input type="radio" name="situation" value="performance"><span>Performance sportive à améliorer<em>Sports performance improvement</em></span></label>
-      <label><input type="radio" name="situation" value="douleurs"><span>Douleurs chroniques ou tension corporelle<em>Chronic pain or body tension</em></span></label>
-      <label><input type="radio" name="situation" value="curiosite"><span>Simplement curieux(se) de connaître mon profil<em>Simply curious about my profile</em></span></label>
+    <label>Quelle(s) situation(s) décrit le mieux ce que vous vivez? <span style="color:var(--gold);font-size:12px;">(3 choix max)</span><span class="req">*</span><em>Which situation(s) best describe what you are experiencing? (max 3 choices)</em></label>
+    <div class="radio-group" style="flex-direction:column;gap:6px;" id="situation-group">
+      <label><input type="checkbox" name="situation" value="stress_surcharge" class="situation-cb"><span>Stress chronique et surcharge mentale<em>Chronic stress and mental overload</em></span></label>
+      <label><input type="checkbox" name="situation" value="fatigue" class="situation-cb"><span>Fatigue persistante malgré le repos<em>Persistent fatigue despite rest</em></span></label>
+      <label><input type="checkbox" name="situation" value="anxiete" class="situation-cb"><span>Anxiété ou attaques de panique<em>Anxiety or panic attacks</em></span></label>
+      <label><input type="checkbox" name="situation" value="sommeil" class="situation-cb"><span>Troubles du sommeil<em>Sleep disturbances</em></span></label>
+      <label><input type="checkbox" name="situation" value="performance" class="situation-cb"><span>Performance sportive à améliorer<em>Sports performance improvement</em></span></label>
+      <label><input type="checkbox" name="situation" value="douleurs" class="situation-cb"><span>Douleurs chroniques ou tension corporelle<em>Chronic pain or body tension</em></span></label>
+      <label><input type="checkbox" name="situation" value="curiosite" class="situation-cb"><span>Simplement curieux(se) de connaître mon profil<em>Simply curious about my profile</em></span></label>
     </div>
+    <div id="situation-hint" class="hint" style="margin-top:6px;color:var(--mid);">Sélectionnez jusqu'à 3 situations · Select up to 3 situations</div>
   </div>
 </div>
 
@@ -391,6 +392,22 @@ footer p{font-size:10px;color:#7a7060;line-height:1.8;}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
+// Limite 3 checkboxes situation
+document.querySelectorAll('.situation-cb').forEach(function(cb){
+  cb.addEventListener('change',function(){
+    const checked=document.querySelectorAll('.situation-cb:checked');
+    if(checked.length>3){
+      this.checked=false;
+      document.getElementById('situation-hint').textContent='Maximum 3 situations · Maximum 3 situations';
+      document.getElementById('situation-hint').style.color='#E24B4A';
+      setTimeout(function(){
+        document.getElementById('situation-hint').textContent='Sélectionnez jusqu\'à 3 situations · Select up to 3 situations';
+        document.getElementById('situation-hint').style.color='var(--mid)';
+      },2000);
+    }
+  });
+});
+
 // Score Nijmegen (8 items, max 32)
 function calcNijmegen(){
   const items=['nq2','nq4','nq6','nq7','nq8','nq10','nq15','nq16'];
