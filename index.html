@@ -21,7 +21,9 @@
 }
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);font-size:15px;line-height:1.6;min-height:100vh;}
 .page-wrap{max-width:720px;margin:0 auto;padding:0 0 80px;}
-header{background:var(--charcoal);padding:40px 40px 36px;text-align:center;}
+header{background:var(--charcoal);padding:40px 40px 36px;text-align:center;position:relative;}
+.lang-btn{position:absolute;top:14px;right:16px;background:transparent;border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:5px 14px;font-size:12px;font-family:'DM Sans',sans-serif;letter-spacing:.08em;cursor:pointer;}
+.lang-btn:hover{background:var(--gold);color:var(--charcoal);}
 .logo-mark{width:48px;height:48px;margin:0 auto 16px;opacity:.9;}
 header h1{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:var(--gold);letter-spacing:.04em;margin-bottom:4px;}
 header .tagline{font-size:12px;color:var(--dusty-blue);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
@@ -35,27 +37,15 @@ header .tagline{font-size:12px;color:var(--dusty-blue);letter-spacing:.12em;text
 .field{margin-bottom:18px;}
 .field label{display:block;font-size:13.5px;font-weight:500;color:var(--charcoal);margin-bottom:6px;}
 .field label em{display:block;font-style:italic;font-weight:400;font-size:12px;color:var(--mid);margin-top:1px;}
-.field input[type=text],.field input[type=email],.field input[type=number],.field textarea{width:100%;padding:10px 13px;border:1px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--charcoal);background:var(--cream);outline:none;transition:border-color .18s;}
+.field input[type=text],.field input[type=email],.field input[type=number],.field textarea{width:100%;padding:10px 13px;border:1px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:16px;color:var(--charcoal);background:var(--cream);outline:none;transition:border-color .18s;}
 .field input:focus,.field textarea:focus{border-color:var(--gold);}
-.field textarea{resize:vertical;min-height:70px;}
 .radio-group{display:flex;flex-wrap:wrap;gap:8px;}
 .radio-group label{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:400;cursor:pointer;margin:0;padding:7px 13px;border:1px solid var(--border);border-radius:20px;background:var(--cream);transition:all .15s;}
-.radio-group label em{font-size:11px;color:var(--mid);font-style:italic;display:block;margin-top:1px;}
 .radio-group label:hover{border-color:var(--gold);background:var(--gold-light);}
-.radio-group input[type=radio]{accent-color:var(--gold);width:14px;height:14px;margin:0;}
+.radio-group input[type=radio],.radio-group input[type=checkbox]{accent-color:var(--gold);width:14px;height:14px;margin:0;flex-shrink:0;}
 .radio-group label:has(input:checked){border-color:var(--gold);background:var(--gold-light);}
-/* Situation checkboxes — allow multiple selections visually */
-#situation-group label:has(input[type=checkbox]:checked){border-color:var(--gold);background:var(--gold-light);}
-#situation-group label{border-radius:8px;}
-.freq-table{width:100%;border-collapse:collapse;font-size:13px;}
-.freq-table th{font-weight:500;font-size:11px;color:var(--mid);padding:7px 8px;text-align:center;border-bottom:1px solid var(--border);background:var(--section-bg);}
-.freq-table th:first-child{text-align:left;}
-.freq-table td{padding:9px 8px;border-bottom:1px solid #ede8df;vertical-align:middle;}
-.freq-table td:first-child{font-size:13px;color:var(--charcoal);}
-.freq-table td:not(:first-child){text-align:center;}
-.freq-table tr:last-child td{border-bottom:none;}
-.freq-table input[type=radio]{accent-color:var(--gold);width:15px;height:15px;cursor:pointer;}
-.freq-table .en{display:block;font-size:11px;font-style:italic;color:var(--mid);margin-top:2px;}
+.radio-group.stack{flex-direction:column;gap:6px;}
+.radio-group.stack label{border-radius:8px;}
 .sev-table{width:100%;border-collapse:collapse;font-size:13px;}
 .sev-table th{font-weight:500;font-size:11px;color:var(--mid);padding:7px 8px;text-align:center;border-bottom:1px solid var(--border);background:var(--section-bg);}
 .sev-table th:first-child{text-align:left;}
@@ -63,31 +53,37 @@ header .tagline{font-size:12px;color:var(--dusty-blue);letter-spacing:.12em;text
 .sev-table td:not(:first-child){text-align:center;}
 .sev-table tr:last-child td{border-bottom:none;}
 .sev-table input[type=radio]{accent-color:var(--gold);width:15px;height:15px;cursor:pointer;}
-.sev-table .en{display:block;font-size:11px;font-style:italic;color:var(--mid);margin-top:2px;}
-.score-row td{font-weight:500;color:var(--charcoal);background:var(--dusty-blue-light);}
 .cp-box{background:var(--dusty-blue-light);border:1px solid var(--dusty-blue);border-radius:8px;padding:18px 22px;}
 .cp-box p{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:10px;}
 .cp-protocol{background:var(--white);border-radius:5px;padding:12px 16px;font-size:12.5px;color:var(--charcoal);line-height:1.7;border:1px solid var(--border);margin-bottom:12px;}
 .cp-protocol strong{color:var(--gold);}
-.cp-input-row{display:flex;align-items:center;gap:14px;}
-.cp-input-row input{width:90px;padding:10px 13px;border:1px solid var(--border);border-radius:5px;font-size:20px;font-weight:500;text-align:center;background:var(--cream);color:var(--charcoal);font-family:'DM Sans',sans-serif;outline:none;}
-.cp-input-row input:focus{border-color:var(--gold);}
+.cp-timer{background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:16px;margin:14px 0;text-align:center;}
+.cp-timer-display{font-size:44px;font-weight:500;letter-spacing:.02em;color:var(--charcoal);font-variant-numeric:tabular-nums;margin:4px 0 12px;}
+.cp-timer-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.cp-timer-btns button{padding:12px 22px;border-radius:6px;border:1px solid var(--gold);background:var(--gold);color:#fff;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;min-width:120px;}
+.cp-timer-btns button.sec{background:transparent;color:var(--charcoal);border-color:var(--border);}
+.cp-timer-btns button:disabled{opacity:.4;cursor:default;}
+.cp-timer-note{font-size:12px;color:var(--mid);margin-top:10px;}
+.cp-result{margin-top:10px;font-size:14px;font-weight:500;color:var(--charcoal);min-height:22px;}
 .cp-scale{margin-top:12px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
-.cp-zone{border-radius:5px;padding:7px 8px;text-align:center;font-size:11px;line-height:1.4;}
+.cp-zone{border-radius:5px;padding:7px 8px;text-align:center;font-size:11px;line-height:1.4;opacity:.75;border:2px solid transparent;}
+.cp-zone.active{opacity:1;border-color:currentColor;}
 .cp-zone strong{display:block;font-size:14px;margin-bottom:2px;}
 .z-red{background:#FDECEA;color:#8B2E2E;}
 .z-orange{background:#FEF3E2;color:#7A4A0A;}
 .z-yellow{background:#FEFCE8;color:#6B5500;}
 .z-green{background:#EDFBF3;color:#1A5C38;}
 .sebq-item{background:var(--section-bg);border-radius:6px;padding:12px 14px;margin-bottom:8px;}
-.sebq-item label{font-size:13px;font-weight:400;margin-bottom:8px;display:block;color:var(--charcoal);}
-.sebq-item label em{display:block;font-size:11.5px;color:var(--mid);margin-top:2px;font-style:italic;}
-.slider-wrap{display:flex;align-items:center;gap:10px;}
-.slider-wrap input[type=range]{flex:1;accent-color:var(--gold);height:4px;cursor:pointer;}
-.slider-val{min-width:28px;text-align:right;font-weight:500;font-size:14px;color:var(--gold);}
-.slider-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--mid);margin-top:3px;}
 .req{color:var(--gold);margin-left:2px;}
 .hint{font-size:12px;color:var(--mid);margin-top:4px;}
+.ph{background:#FFF3B0;color:#6B5500;border-radius:3px;padding:0 3px;font-weight:500;}
+.sub-q{margin-bottom:18px;}
+.sub-q>.q-label{display:block;font-size:13.5px;font-weight:500;margin-bottom:6px;}
+.num-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+.num-row label{font-size:13.5px;font-weight:500;flex:1;min-width:200px;}
+.num-row input{width:80px;padding:9px 10px;border:1px solid var(--border);border-radius:5px;font-size:16px;text-align:center;background:var(--cream);font-family:'DM Sans',sans-serif;outline:none;}
+.num-row input:focus{border-color:var(--gold);}
+.err{color:#B3261E;font-size:13px;margin-top:10px;text-align:center;min-height:18px;}
 .submit-section{background:var(--charcoal);padding:32px 40px;text-align:center;}
 .btn-submit{background:var(--gold);color:var(--charcoal);border:none;border-radius:4px;padding:14px 48px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;letter-spacing:.06em;cursor:pointer;transition:opacity .18s;}
 .btn-submit:hover{opacity:.88;}
@@ -95,379 +91,952 @@ header .tagline{font-size:12px;color:var(--dusty-blue);letter-spacing:.12em;text
 .submit-note{color:var(--dusty-blue);font-size:12px;margin-top:10px;}
 footer{background:#222;padding:20px 40px;text-align:center;}
 footer p{font-size:10px;color:#7a7060;line-height:1.8;}
+/* Résultats */
+#results{display:none;}
+.res-hero{background:var(--charcoal);padding:36px 40px;text-align:center;}
+.res-hero h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:var(--gold);margin-bottom:6px;}
+.res-hero p{color:#d6cfc5;font-size:13.5px;}
+.res-sec{background:var(--white);border-bottom:1px solid var(--border);padding:26px 40px;}
+.res-sec h3{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--gold);margin-bottom:12px;}
+.pillar{margin-bottom:16px;}
+.pillar-top{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;margin-bottom:5px;}
+.pillar-name{font-weight:500;}
+.pillar-level{font-size:13px;font-weight:500;}
+.bar-bg{background:#ECE6D8;border-radius:8px;height:14px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:8px;}
+.lv0{color:#B4541A;}.bf0{background:#E08A4B;}
+.lv1{color:#8A6D00;}.bf1{background:#D9B54A;}
+.lv2{color:#1A5C38;}.bf2{background:#4FA877;}
+.priority-card{background:var(--section-bg);border-left:4px solid var(--gold);border-radius:4px;padding:14px 18px;font-size:14px;line-height:1.7;}
+.priority-card strong{color:var(--charcoal);}
+.cross{margin-top:14px;font-size:14px;line-height:1.7;}
+.icr-big{font-size:34px;font-weight:500;}
+.ex-list{margin:8px 0 0 20px;font-size:14px;line-height:1.75;}
+.ex-title{font-weight:500;font-size:14px;}
+.warn{background:#FEF3E2;border:1px solid #F0D2A0;color:#7A4A0A;border-radius:6px;padding:12px 16px;font-size:13px;line-height:1.6;margin-bottom:14px;}
+details.det{border:1px solid var(--border);border-radius:6px;padding:10px 14px;background:var(--cream);}
+details.det summary{cursor:pointer;font-weight:500;font-size:14px;}
+details.det table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px;}
+details.det td{padding:7px 4px;border-bottom:1px solid #ede8df;vertical-align:top;}
+details.det td:last-child{text-align:right;font-weight:500;white-space:nowrap;padding-left:10px;}
+.limits{font-size:12.5px;color:var(--mid);line-height:1.7;}
+
+body{padding-top:52px;}
+#progress-bar{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--charcoal);padding:2px 12px;min-height:48px;display:flex;gap:10px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.25);}
+#progress-bar.hidden{display:none;}
+.pg-seg{flex:1;min-width:0;}
+.pg-lbl{display:block;font-size:12px;color:var(--dusty-blue);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px;}
+.pg-track{height:4px;background:rgba(255,255,255,.18);border-radius:3px;overflow:hidden;}
+.pg-fill{height:100%;width:0;background:var(--gold);transition:width .25s;}
+.pg-seg.done .pg-lbl{color:var(--gold);}
+.pg-reset{background:transparent;border:none;color:var(--dusty-blue);font-size:11px;text-decoration:underline;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0 2px;white-space:nowrap;}
+.btn-link{background:transparent;border:none;color:var(--dusty-blue);font-size:12px;text-decoration:underline;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:14px;}
+.btn-secondary{background:var(--gold);color:var(--charcoal);border:none;border-radius:4px;padding:11px 32px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;}
+.btn-secondary:hover{opacity:.88;}
+.contact-actions{text-align:center;margin-top:6px;}
+.contact-err{color:#B3261E;font-size:13px;margin-top:8px;min-height:18px;}
+.num{display:none;}
+.sev-table td.m-ends{display:none;}
+.cp-warn{color:#B4541A;font-size:14px;margin-top:6px;min-height:0;}
+.alt-lang{display:block;font-size:11.5px;font-style:italic;color:var(--mid);font-weight:400;margin-top:2px;}
+.consent-row{display:flex;align-items:flex-start;gap:10px;font-weight:400;cursor:pointer;margin-bottom:12px;}
+.consent-row input{margin-top:3px;accent-color:var(--gold);width:16px;height:16px;flex-shrink:0;}
+.consent-row span.txt{font-size:13.5px;}
+.pol{color:var(--gold);text-decoration:underline;}
 @media(max-width:580px){
-  .section{padding:20px 18px;}
-  header{padding:28px 20px 24px;}
+  .section,.res-sec{padding:20px 18px;}
+  header{padding:44px 20px 24px;}
+  .res-hero{padding:28px 18px;}
   .cp-scale{grid-template-columns:1fr 1fr;}
-  .freq-table th,.freq-table td{padding:7px 4px;font-size:11.5px;}
+}
+
+/* Boutons: zone tactile minimale */
+.btn-submit,.btn-secondary,.btn-link,.pg-reset,.lang-btn,.cp-timer-btns button{min-height:44px;}
+.radio-group label{min-height:44px;}
+/* Godin: stepper */
+.stepper{display:flex;align-items:center;gap:6px;}
+.stepper button{width:44px;height:44px;border-radius:8px;border:1px solid var(--border);background:var(--cream);font-size:22px;line-height:1;cursor:pointer;color:var(--charcoal);font-family:'DM Sans',sans-serif;}
+.stepper button:active{background:var(--gold-light);}
+.num-row .stepper input{width:64px;height:44px;padding:0;text-align:center;font-size:16px;}
+/* Ordinateur: tableaux */
+.sev-table thead th{position:sticky;top:48px;z-index:5;background:var(--section-bg);}
+@media(min-width:581px){.sev-table tbody tr:nth-child(even) td{background:#FBF8F1;}}
+.sev-table td.cell{padding:0;}
+.sev-table td.cell label.cellbtn{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;cursor:pointer;}
+@media(min-width:581px){
+  .sev-table tbody td.cell:hover{background:#F7EBC4;}
+  .sev-table tbody tr td.cell:has(input:checked){background:var(--gold-light);}
+}
+/* Mobile */
+@media(max-width:580px){
+  body{font-size:15px;}
+  .field label,.radio-group label,.consent-row span.txt,.sub-q>.q-label,.num-row label,.cp-box p,.cp-protocol,.intro-box,.cp-timer-note,.icr-note{font-size:15px;}
+  .section-subtitle{font-size:14px;}
+  .hint,.cp-zone{font-size:13.5px;}
+  .sev-table,.sev-table tbody{display:block;width:100%;}
+  .sev-table thead{display:none;}
+  .sev-table tr{display:flex;flex-wrap:wrap;background:var(--section-bg);border-radius:10px;padding:14px 10px 10px;margin-bottom:12px;}
+  .sev-table td{display:block;border:none;padding:0;background:transparent;}
+  .sev-table td:first-child{width:100%;font-size:15px;font-weight:500;margin-bottom:10px;line-height:1.45;padding:0 4px;}
+  .sev-table td.cell{flex:1 0 0;padding:0 2px;text-align:center;}
+  .sev-table td.cell label.cellbtn{min-height:52px;}
+  .sev-table td.cell input[type=radio]{position:absolute;opacity:0;width:1px;height:1px;}
+  .sev-table .num{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--border);background:var(--white);font-size:16px;font-weight:500;}
+  .sev-table label:has(input:checked) .num{background:var(--gold);border-color:var(--gold);color:var(--charcoal);}
+  .sev-table td.m-ends{display:flex;justify-content:space-between;width:100%;font-size:13.5px;color:var(--mid);margin-top:4px;padding:0 4px;}
+  .pg-reset{font-size:12px;}
 }
 </style>
 </head>
 <body>
+<div id="progress-bar">
+  <div class="pg-seg" id="pg_resp"><span class="pg-lbl" data-i="p_resp"></span><div class="pg-track"><div class="pg-fill" id="pgf_resp"></div></div></div>
+  <div class="pg-seg" id="pg_mouv"><span class="pg-lbl" data-i="p_mouv"></span><div class="pg-track"><div class="pg-fill" id="pgf_mouv"></div></div></div>
+  <div class="pg-seg" id="pg_cons"><span class="pg-lbl" data-i="p_cons"></span><div class="pg-track"><div class="pg-fill" id="pgf_cons"></div></div></div>
+  <button type="button" class="pg-reset" id="reset-btn-top" data-i="btn_restart"></button>
+</div>
 <div class="page-wrap">
 
 <header>
+  <button type="button" class="lang-btn" id="lang-btn">English</button>
   <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <circle cx="24" cy="24" r="20" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity=".5"/>
     <path d="M24 8 C10 16 10 32 24 40 C38 32 38 16 24 8Z" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
     <circle cx="24" cy="24" r="3" fill="#C9A84C" opacity=".9"/>
   </svg>
-  <h1>Bilan Respiratoire Breathavia</h1>
-  <div class="tagline">Breathavia Respiratory Assessment · Rééducation Respiratoire</div>
-  <div class="intro-box">
-    <strong>Évaluez votre profil respiratoire en 5 minutes.</strong> Ce bilan gratuit et abrégé vous donnera un premier aperçu de votre fonctionnement respiratoire selon les 3 piliers Breathavia: Respiration, Mouvement et Conscience. Vous recevrez vos résultats par courriel immédiatement.<br><br>
-    <em style="color:#b0aaa2;">Assess your respiratory profile in 5 minutes. This free abbreviated assessment will give you a first overview of your breathing function across the 3 Breathavia pillars: Breathing, Movement and Awareness.</em><br><br>
-    <span style="color:#C9A84C;font-size:12px;">⚠ Version abrégée · Abbreviated version — Un bilan complet est disponible lors d'une séance individuelle. / A complete assessment is available during an individual session.</span>
-  </div>
+  <h1 data-i="h1"></h1>
+  <div class="tagline" data-i="tagline"></div>
+  <div class="intro-box" data-i="intro"></div>
 </header>
 
 <form id="bilan-form" action="javascript:void(0);" method="POST" novalidate>
-<input type="hidden" name="Score_Nijmegen" id="hidden_nq_score" value="">
 <input type="hidden" name="type_formulaire" value="bilan_public">
+<input type="hidden" name="langue" id="hidden_langue" value="fr">
+<input type="hidden" name="icr_score" id="icr_score" value="">
 
-<!-- SECTION 1 -->
+<!-- 1. SÉCURITÉ -->
 <div class="section">
   <div class="section-header">
     <div class="section-num">1</div>
-    <div>
-      <div class="section-title">Informations personnelles</div>
-      <div class="section-subtitle">Personal information</div>
-    </div>
+    <div><div class="section-title" data-i="s1_title"></div></div>
   </div>
   <div class="field">
-    <label for="nom">Nom complet <span class="req">*</span><em>Full name</em></label>
-    <input type="text" id="nom" name="nom" required placeholder="Prénom Nom / First Last">
-  </div>
-  <div class="field">
-    <label for="email">Adresse courriel <span class="req">*</span><em>Email address</em></label>
-    <input type="email" id="email" name="email" required placeholder="vous@exemple.com">
-  </div>
-  <div class="field">
-    <label for="motif">Qu'est-ce qui vous amène à faire ce bilan?<em>What brings you to take this assessment?</em></label>
-    <textarea id="motif" name="motif" rows="2" placeholder="Ex: stress, fatigue, sommeil, performance sportive…"></textarea>
-  </div>
-  <div class="field">
-    <label>Quel énoncé vous décrit le mieux en ce moment? <span style="color:var(--gold);font-size:12px;">(3 choix max)</span><span class="req">*</span><em>Which statement best describes you right now? (max 3 choices)</em></label>
-    <div class="radio-group" style="flex-direction:column;gap:6px;" id="situation-group">
-      <label><input type="checkbox" name="situation" value="stress_surcharge" class="situation-cb"><span>Stress chronique et surcharge mentale<em>Chronic stress and mental overload</em></span></label>
-      <label><input type="checkbox" name="situation" value="fatigue" class="situation-cb"><span>Fatigue persistante malgré le repos<em>Persistent fatigue despite rest</em></span></label>
-      <label><input type="checkbox" name="situation" value="anxiete" class="situation-cb"><span>Anxiété ou attaques de panique<em>Anxiety or panic attacks</em></span></label>
-      <label><input type="checkbox" name="situation" value="sommeil" class="situation-cb"><span>Troubles du sommeil<em>Sleep disturbances</em></span></label>
-      <label><input type="checkbox" name="situation" value="performance" class="situation-cb"><span>Performance sportive à améliorer<em>Sports performance improvement</em></span></label>
-      <label><input type="checkbox" name="situation" value="douleurs" class="situation-cb"><span>Douleurs chroniques ou tension corporelle<em>Chronic pain or body tension</em></span></label>
-      <label><input type="checkbox" name="situation" value="curiosite" class="situation-cb"><span>Simplement curieux(se) de connaître mon profil<em>Simply curious about my profile</em></span></label>
-    </div>
-    <div id="situation-hint" class="hint" style="margin-top:6px;color:var(--mid);">Sélectionnez jusqu'à 3 situations · Select up to 3 situations</div>
+    <label style="display:flex;align-items:flex-start;gap:10px;font-weight:400;cursor:pointer;">
+      <input type="checkbox" id="secu_assis" style="margin-top:3px;accent-color:var(--gold);width:16px;height:16px;flex-shrink:0;">
+      <span style="font-size:14px;"><span data-i="secu_assis"></span> <span class="req">*</span></span>
+    </label>
   </div>
 </div>
 
-<!-- SECTION 2 -->
+<!-- 2. ICR -->
 <div class="section">
   <div class="section-header">
     <div class="section-num">2</div>
-    <div>
-      <div class="section-title">Pause Contrôle</div>
-      <div class="section-subtitle">Control Pause · Steps Test</div>
-    </div>
+    <div><div class="section-title" data-i="s2_title"></div></div>
   </div>
   <div class="cp-box">
-    <p>La Pause Contrôle mesure votre tolérance fonctionnelle au CO₂ et reflète votre patron respiratoire de base.<br>
-    <em style="font-size:12px;">The Control Pause measures your functional CO₂ tolerance and reflects your baseline breathing pattern.</em></p>
-    <div class="cp-protocol">
-      <strong>Protocole / Protocol:</strong><br>
-      1. Respirez normalement par le nez 1–2 minutes. <em style="font-size:11.5px;color:var(--mid)">Breathe normally through your nose for 1–2 minutes.</em><br>
-      2. Après une expiration normale, pincez le nez. <em style="font-size:11.5px;color:var(--mid)">After a normal exhale, pinch your nose.</em><br>
-      3. Comptez jusqu'au premier besoin net de respirer (pas au maximum). <em style="font-size:11.5px;color:var(--mid)">Count until the first definite urge to breathe — not maximum.</em><br>
-      4. Relâchez et reprenez calmement. <em style="font-size:11.5px;color:var(--mid)">Release and resume calmly.</em>
-    </div>
-    <div class="cp-input-row">
-      <input type="number" id="cp_score" name="cp_score" min="0" max="120" placeholder="—">
-      <span style="font-size:13px;color:var(--mid);">secondes / seconds</span>
+    <p data-i="icr_desc"></p>
+    <div class="cp-protocol" data-i="icr_protocol"></div>
+    <div class="cp-timer">
+      <div class="cp-timer-display" id="icr_display">0.0</div>
+      <div class="cp-timer-btns">
+        <button type="button" id="icr_start" data-i="btn_start" disabled></button>
+        <button type="button" id="icr_stop" class="sec" data-i="btn_stop" disabled></button>
+        <button type="button" id="icr_reset" class="sec" data-i="btn_reset"></button>
+      </div>
+      <div class="cp-timer-note" data-i="icr_note"></div>
+      <div class="cp-result" id="icr_result"></div>
+      <div class="cp-warn" id="icr_warn"></div>
     </div>
     <div class="cp-scale">
-      <div class="cp-zone z-red"><strong>&lt;10s</strong>Dysfonction sévère<br><em style="font-size:10px;">Severe</em></div>
-      <div class="cp-zone z-orange"><strong>10–20s</strong>Dysfonction modérée<br><em style="font-size:10px;">Moderate</em></div>
-      <div class="cp-zone z-yellow"><strong>20–40s</strong>Légère / Mild</div>
-      <div class="cp-zone z-green"><strong>&gt;40s</strong>Optimal</div>
+      <div class="cp-zone z-red" id="zone0"><strong data-i="z0_range"></strong><span data-i="z0_label"></span></div>
+      <div class="cp-zone z-orange" id="zone1"><strong data-i="z1_range"></strong><span data-i="z1_label"></span></div>
+      <div class="cp-zone z-yellow" id="zone2"><strong data-i="z2_range"></strong><span data-i="z2_label"></span></div>
+      <div class="cp-zone z-green" id="zone3"><strong data-i="z3_range"></strong><span data-i="z3_label"></span></div>
     </div>
-    <div class="hint" style="margin-top:10px;">Si vous n'avez pas encore fait le test, laissez vide.<br><em>If you haven't done the test yet, leave blank.</em></div>
   </div>
 </div>
 
-<!-- SECTION 3 -->
+<!-- 3. CONTACT -->
 <div class="section">
   <div class="section-header">
     <div class="section-num">3</div>
     <div>
-      <div class="section-title">Habitudes respiratoires</div>
-      <div class="section-subtitle">Breathing habits</div>
+      <div class="section-title" data-i="s3_title"></div>
+      <div class="section-subtitle" data-i="s3_sub"></div>
     </div>
   </div>
-  <table class="freq-table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Jamais<br><em style="font-weight:400;font-style:italic;font-size:10px;">Never</em></th>
-        <th>Parfois<br><em style="font-weight:400;font-style:italic;font-size:10px;">Sometimes</em></th>
-        <th>Souvent<br><em style="font-weight:400;font-style:italic;font-size:10px;">Often</em></th>
-        <th>Très svt<br><em style="font-weight:400;font-style:italic;font-size:10px;">Very often</em></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Stress pendant la journée<span class="en">Stressed during the day</span></td><td><input type="radio" name="stress" value="0"></td><td><input type="radio" name="stress" value="1"></td><td><input type="radio" name="stress" value="2"></td><td><input type="radio" name="stress" value="3"></td></tr>
-      <tr><td>Bâillements fréquents<span class="en">Frequent yawning</span></td><td><input type="radio" name="baillements" value="0"></td><td><input type="radio" name="baillements" value="1"></td><td><input type="radio" name="baillements" value="2"></td><td><input type="radio" name="baillements" value="3"></td></tr>
-      <tr><td>Respiration buccale la nuit<span class="en">Mouth breathing at night</span></td><td><input type="radio" name="bouche_nuit" value="0"></td><td><input type="radio" name="bouche_nuit" value="1"></td><td><input type="radio" name="bouche_nuit" value="2"></td><td><input type="radio" name="bouche_nuit" value="3"></td></tr>
-      <tr><td>Mains ou pieds froids<span class="en">Cold hands or feet</span></td><td><input type="radio" name="mains_froids" value="0"></td><td><input type="radio" name="mains_froids" value="1"></td><td><input type="radio" name="mains_froids" value="2"></td><td><input type="radio" name="mains_froids" value="3"></td></tr>
-    </tbody>
-  </table>
-  <div class="field" style="margin-top:16px;">
-    <label>Heures d'exercice physique par semaine<em>Hours of physical exercise per week</em></label>
-    <div class="radio-group">
-      <label><input type="radio" name="exercice" value="moins_1h"><span>&lt;1h</span></label>
-      <label><input type="radio" name="exercice" value="1-2h"><span>1–2h</span></label>
-      <label><input type="radio" name="exercice" value="2-3h"><span>2–3h</span></label>
-      <label><input type="radio" name="exercice" value="3-4h"><span>3–4h</span></label>
-      <label><input type="radio" name="exercice" value="4-5h"><span>4–5h</span></label>
-      <label><input type="radio" name="exercice" value="5h+"><span>5h+</span></label>
-    </div>
+  <div class="field">
+    <label for="prenom"><span data-i="lbl_prenom"></span> <span class="req">*</span></label>
+    <input type="text" id="prenom" name="prenom" required autocomplete="given-name" data-ip="ph_prenom">
+  </div>
+  <div class="field">
+    <label for="email"><span data-i="lbl_email"></span> <span class="req">*</span></label>
+    <input type="email" id="email" name="email" required autocomplete="email" placeholder="vous@exemple.com">
+  </div>
+  <label class="consent-row">
+    <input type="checkbox" id="consent_resultats" name="consent_resultats">
+    <span class="txt"><span data-i="consent_a"></span> <span class="req">*</span></span>
+  </label>
+  <label class="consent-row">
+    <input type="checkbox" id="consent_marketing" name="consent_marketing">
+    <span class="txt" data-i="consent_b"></span>
+  </label>
+  <div class="hint" data-i="policy_line" style="margin-bottom:14px;"></div>
+  <div class="contact-actions">
+    <button type="button" class="btn-secondary" id="continue-btn" data-i="btn_continue"></button>
+    <div class="contact-err" id="contact-error"></div>
   </div>
 </div>
 
-<!-- SECTION 4 — Nijmegen abrégé (8 items) -->
+<!-- 4. RESPIRATION -->
 <div class="section">
   <div class="section-header">
     <div class="section-num">4</div>
     <div>
-      <div class="section-title">Signes respiratoires</div>
-      <div class="section-subtitle">Respiratory signs — Nijmegen (version abrégée / short form)</div>
+      <div class="section-title" data-i="s4_title"></div>
+      <div class="section-subtitle" data-i="s4_sub"></div>
     </div>
   </div>
-  <table class="sev-table">
-    <thead>
-      <tr>
-        <th style="text-align:left;">Symptôme / Symptom</th>
-        <th>Jamais<br><small>0</small></th>
-        <th>Rarement<br><small>1</small></th>
-        <th>Parfois<br><small>2</small></th>
-        <th>Souvent<br><small>3</small></th>
-        <th>Très svt<br><small>4</small></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Respiration rapide ou profonde<span class="en">Fast or deep breathing</span></td><td><input type="radio" name="nq6" value="0"></td><td><input type="radio" name="nq6" value="1"></td><td><input type="radio" name="nq6" value="2"></td><td><input type="radio" name="nq6" value="3"></td><td><input type="radio" name="nq6" value="4"></td></tr>
-      <tr><td>Manque de souffle<span class="en">Shortness of breath</span></td><td><input type="radio" name="nq7" value="0"></td><td><input type="radio" name="nq7" value="1"></td><td><input type="radio" name="nq7" value="2"></td><td><input type="radio" name="nq7" value="3"></td><td><input type="radio" name="nq7" value="4"></td></tr>
-      <tr><td>Oppression thoracique<span class="en">Tightness in the chest</span></td><td><input type="radio" name="nq8" value="0"></td><td><input type="radio" name="nq8" value="1"></td><td><input type="radio" name="nq8" value="2"></td><td><input type="radio" name="nq8" value="3"></td><td><input type="radio" name="nq8" value="4"></td></tr>
-      <tr><td>Étourdissements<span class="en">Dizzy spells</span></td><td><input type="radio" name="nq4" value="0"></td><td><input type="radio" name="nq4" value="1"></td><td><input type="radio" name="nq4" value="2"></td><td><input type="radio" name="nq4" value="3"></td><td><input type="radio" name="nq4" value="4"></td></tr>
-      <tr><td>Fourmillements aux doigts<span class="en">Tingling fingers</span></td><td><input type="radio" name="nq10" value="0"></td><td><input type="radio" name="nq10" value="1"></td><td><input type="radio" name="nq10" value="2"></td><td><input type="radio" name="nq10" value="3"></td><td><input type="radio" name="nq10" value="4"></td></tr>
-      <tr><td>Sensation de tension<span class="en">Feeling tense</span></td><td><input type="radio" name="nq2" value="0"></td><td><input type="radio" name="nq2" value="1"></td><td><input type="radio" name="nq2" value="2"></td><td><input type="radio" name="nq2" value="3"></td><td><input type="radio" name="nq2" value="4"></td></tr>
-      <tr><td>Palpitations<span class="en">Thumping of the heart</span></td><td><input type="radio" name="nq15" value="0"></td><td><input type="radio" name="nq15" value="1"></td><td><input type="radio" name="nq15" value="2"></td><td><input type="radio" name="nq15" value="3"></td><td><input type="radio" name="nq15" value="4"></td></tr>
-      <tr><td>Sentiment d'anxiété<span class="en">Feeling of anxiety</span></td><td><input type="radio" name="nq16" value="0"></td><td><input type="radio" name="nq16" value="1"></td><td><input type="radio" name="nq16" value="2"></td><td><input type="radio" name="nq16" value="3"></td><td><input type="radio" name="nq16" value="4"></td></tr>
-      <tr class="score-row">
-        <td><strong>Score / Total (max 32)</strong></td>
-        <td colspan="5" style="text-align:center;font-size:16px;" id="nq-score">—</td>
-      </tr>
-    </tbody>
+  <p class="hint" style="margin-bottom:12px;" id="nij_intro"></p>
+  <table class="sev-table" id="nij_table">
+    <thead><tr id="nij_head"></tr></thead>
+    <tbody id="nij_body"></tbody>
   </table>
 </div>
 
-<!-- SECTION 5 — Symptômes -->
+<!-- 5. MOUVEMENT -->
 <div class="section">
   <div class="section-header">
     <div class="section-num">5</div>
     <div>
-      <div class="section-title">Symptômes actuels</div>
-      <div class="section-subtitle">Current symptoms — 0 = absent · 1 = léger · 2 = modéré · 3 = sévère</div>
+      <div class="section-title" data-i="s5_title"></div>
+      <div class="section-subtitle" data-i="s5_sub"></div>
     </div>
   </div>
-  <table class="sev-table">
-    <thead>
-      <tr><th style="text-align:left;">Symptôme / Symptom</th><th>0</th><th>1</th><th>2</th><th>3</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Fatigue / Tiredness<span class="en"></span></td><td><input type="radio" name="s_fatigue" value="0"></td><td><input type="radio" name="s_fatigue" value="1"></td><td><input type="radio" name="s_fatigue" value="2"></td><td><input type="radio" name="s_fatigue" value="3"></td></tr>
-      <tr><td>Anxiété / Anxiety</td><td><input type="radio" name="s_anxiete" value="0"></td><td><input type="radio" name="s_anxiete" value="1"></td><td><input type="radio" name="s_anxiete" value="2"></td><td><input type="radio" name="s_anxiete" value="3"></td></tr>
-      <tr><td>Insomnie / Broken sleep</td><td><input type="radio" name="s_insomnie" value="0"></td><td><input type="radio" name="s_insomnie" value="1"></td><td><input type="radio" name="s_insomnie" value="2"></td><td><input type="radio" name="s_insomnie" value="3"></td></tr>
-      <tr><td>Essoufflement au repos<span class="en">Breathlessness at rest</span></td><td><input type="radio" name="s_essouf" value="0"></td><td><input type="radio" name="s_essouf" value="1"></td><td><input type="radio" name="s_essouf" value="2"></td><td><input type="radio" name="s_essouf" value="3"></td></tr>
-      <tr><td>Douleurs musculaires<span class="en">Achy muscles</span></td><td><input type="radio" name="s_muscles" value="0"></td><td><input type="radio" name="s_muscles" value="1"></td><td><input type="radio" name="s_muscles" value="2"></td><td><input type="radio" name="s_muscles" value="3"></td></tr>
-      <tr><td>Stress perçu élevé<span class="en">High perceived stress</span></td><td><input type="radio" name="s_stress" value="0"></td><td><input type="radio" name="s_stress" value="1"></td><td><input type="radio" name="s_stress" value="2"></td><td><input type="radio" name="s_stress" value="3"></td></tr>
-      <tr><td>Difficultés de concentration<span class="en">Poor concentration</span></td><td><input type="radio" name="s_conc" value="0"></td><td><input type="radio" name="s_conc" value="1"></td><td><input type="radio" name="s_conc" value="2"></td><td><input type="radio" name="s_conc" value="3"></td></tr>
-      <tr><td>Maux de tête / Headaches</td><td><input type="radio" name="s_tete" value="0"></td><td><input type="radio" name="s_tete" value="1"></td><td><input type="radio" name="s_tete" value="2"></td><td><input type="radio" name="s_tete" value="3"></td></tr>
-    </tbody>
-  </table>
+  <div class="sub-q">
+    <span class="q-label" data-i="godin_q"></span>
+    <p class="hint" id="godin_intro" style="margin-bottom:10px;"></p>
+    <div class="num-row"><label for="godin_intenses"><span data-i="godin_int"></span><br><span class="hint" id="godin_int_ph"></span></label><div class="stepper"><button type="button" class="st-minus" data-target="godin_intenses" aria-label="-">&#8722;</button><input type="text" id="godin_intenses" name="godin_intenses" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="5"><button type="button" class="st-plus" data-target="godin_intenses" aria-label="+">+</button></div></div>
+    <div class="num-row"><label for="godin_moderees"><span data-i="godin_mod"></span><br><span class="hint" id="godin_mod_ph"></span></label><div class="stepper"><button type="button" class="st-minus" data-target="godin_moderees" aria-label="-">&#8722;</button><input type="text" id="godin_moderees" name="godin_moderees" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="5"><button type="button" class="st-plus" data-target="godin_moderees" aria-label="+">+</button></div></div>
+    <div class="num-row"><label for="godin_legeres"><span data-i="godin_lig"></span><br><span class="hint" id="godin_lig_ph"></span></label><div class="stepper"><button type="button" class="st-minus" data-target="godin_legeres" aria-label="-">&#8722;</button><input type="text" id="godin_legeres" name="godin_legeres" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="5"><button type="button" class="st-plus" data-target="godin_legeres" aria-label="+">+</button></div></div>
+  </div>
+  <div class="sub-q">
+    <span class="q-label"><span data-i="assis_q"></span> <span class="req">*</span></span>
+    <div class="radio-group" id="assis_group">
+      <label><input type="radio" name="assis" value="moins4"><span data-i="assis_1"></span></label>
+      <label><input type="radio" name="assis" value="4a6"><span data-i="assis_2"></span></label>
+      <label><input type="radio" name="assis" value="6a8"><span data-i="assis_3"></span></label>
+      <label><input type="radio" name="assis" value="8plus"><span data-i="assis_4"></span></label>
+    </div>
+  </div>
 </div>
 
-<!-- SECTION 6 — PBM-S (1 slider par dimension) -->
+<!-- 6. CONSCIENCE -->
 <div class="section">
   <div class="section-header">
     <div class="section-num">6</div>
     <div>
-      <div class="section-title">Votre rapport à la respiration</div>
-      <div class="section-subtitle">Your relationship with breathing — PBM-S (Darkins, 2024)</div>
+      <div class="section-title" data-i="s6_title"></div>
+      <div class="section-subtitle" data-i="s6_sub"></div>
     </div>
   </div>
-  <p style="font-size:13px;color:var(--mid);margin-bottom:14px;">Notez votre accord de 0 à 100. / Rate your agreement from 0 to 100.</p>
-
-  <div class="sebq-item">
-    <label>Je peux contrôler efficacement ma respiration lorsque c'est utile.<em>I can effectively control my breathing when that's helpful.</em></label>
-    <div class="slider-wrap">
-      <span style="font-size:11px;color:var(--mid);">0</span>
-      <input type="range" min="0" max="100" value="50" name="pbm2" oninput="this.nextElementSibling.textContent=this.value">
-      <span class="slider-val">50</span>
-    </div>
-    <div class="slider-labels"><span>Pas du tout / Not at all</span><span>Totalement / Completely</span></div>
-  </div>
-
-  <div class="sebq-item">
-    <label>Ma respiration est habituellement sans effort.<em>My breathing is usually effortless.</em></label>
-    <div class="slider-wrap">
-      <span style="font-size:11px;color:var(--mid);">0</span>
-      <input type="range" min="0" max="100" value="50" name="pbm4" oninput="this.nextElementSibling.textContent=this.value">
-      <span class="slider-val">50</span>
-    </div>
-    <div class="slider-labels"><span>Pas du tout / Not at all</span><span>Totalement / Completely</span></div>
-  </div>
-
-  <div class="sebq-item">
-    <label>Être attentif(ve) à ma respiration enrichit ma vie.<em>Being aware of my breath benefits my life.</em></label>
-    <div class="slider-wrap">
-      <span style="font-size:11px;color:var(--mid);">0</span>
-      <input type="range" min="0" max="100" value="50" name="pbm9" oninput="this.nextElementSibling.textContent=this.value">
-      <span class="slider-val">50</span>
-    </div>
-    <div class="slider-labels"><span>Pas du tout / Not at all</span><span>Totalement / Completely</span></div>
-  </div>
+  <p class="hint" style="margin-bottom:12px;" id="pss_intro"></p>
+  <table class="sev-table">
+    <thead><tr id="pss_head"></tr></thead>
+    <tbody id="pss_body"></tbody>
+  </table>
 </div>
 
-<!-- SECTION 7 — Consentement simple -->
+<!-- 7. PROFIL -->
 <div class="section">
   <div class="section-header">
     <div class="section-num">7</div>
-    <div>
-      <div class="section-title">Consentement</div>
-      <div class="section-subtitle">Consent</div>
+    <div><div class="section-title" data-i="s7_title"></div></div>
+  </div>
+  <div class="sub-q">
+    <span class="q-label"><span data-i="portrait_q"></span> <span class="req">*</span></span>
+    <div class="radio-group stack">
+      <label><input type="radio" name="portrait" value="plein_regime"><span data-i="portrait_1"></span></label>
+      <label><input type="radio" name="portrait" value="tendu"><span data-i="portrait_2"></span></label>
+      <label><input type="radio" name="portrait" value="pilote_auto"><span data-i="portrait_3"></span></label>
+      <label><input type="radio" name="portrait" value="melange"><span data-i="portrait_4"></span></label>
     </div>
   </div>
-  <div class="field">
-    <label style="display:flex;align-items:flex-start;gap:10px;font-weight:400;cursor:pointer;">
-      <input type="checkbox" id="consent_check" required style="margin-top:3px;accent-color:var(--gold);width:16px;height:16px;flex-shrink:0;">
-      <span style="font-size:13.5px;">Je comprends que ce bilan est une évaluation indicative et non un diagnostic médical. Je consens à recevoir mes résultats par courriel. <span class="req">*</span><br>
-      <em style="font-size:12px;color:var(--mid);">I understand this assessment is indicative and not a medical diagnosis. I consent to receive my results by email.</em></span>
-    </label>
+  <div class="sub-q">
+    <span class="q-label" data-i="obj_q"></span>
+    <div class="radio-group stack">
+      <label><input type="checkbox" name="objectif" value="sommeil"><span data-i="obj_1"></span></label>
+      <label><input type="checkbox" name="objectif" value="calme"><span data-i="obj_2"></span></label>
+      <label><input type="checkbox" name="objectif" value="energie"><span data-i="obj_3"></span></label>
+      <label><input type="checkbox" name="objectif" value="detente"><span data-i="obj_4"></span></label>
+      <label><input type="checkbox" name="objectif" value="presence"><span data-i="obj_5"></span></label>
+      <label><input type="checkbox" name="objectif" value="performance"><span data-i="obj_6"></span></label>
+    </div>
+  </div>
+  <div class="sub-q">
+    <span class="q-label"><span data-i="sante_q"></span> <span class="req">*</span></span>
+    <div class="radio-group">
+      <label><input type="radio" name="condition_sante" value="oui"><span data-i="yes"></span></label>
+      <label><input type="radio" name="condition_sante" value="non"><span data-i="no"></span></label>
+    </div>
   </div>
 </div>
 
 <!-- SUBMIT -->
 <div class="submit-section">
-  <button type="submit" class="btn-submit" id="submit-btn">Recevoir mon bilan · Get my assessment</button>
-  <div class="submit-note">Vos résultats vous seront envoyés à l'adresse courriel fournie · Results will be sent to the email address provided</div>
+  <button type="submit" class="btn-submit" id="submit-btn" data-i="btn_submit"></button>
+  <div class="err" id="form-error"></div>
+  <div class="submit-note" data-i="submit_note"></div>
+  <button type="button" class="btn-link" id="reset-btn" data-i="btn_restart"></button>
 </div>
 
 </form>
 
-<!-- MERCI -->
-<div id="merci-section" style="display:none;background:var(--charcoal);padding:60px 40px;text-align:center;">
-  <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:52px;height:52px;margin:0 auto 18px;display:block;">
-    <circle cx="24" cy="24" r="20" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity=".4"/>
-    <path d="M14 24l7 7 13-13" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:var(--gold);margin-bottom:6px;">Merci!</div>
-  <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--dusty-blue);margin-bottom:22px;">Thank you!</div>
-  <div style="color:#d6cfc5;font-size:14px;line-height:1.9;max-width:480px;margin:0 auto;">
-    Votre bilan Breathavia vous sera envoyé par courriel dans quelques instants.<br><br>
-    <em style="color:#a09888;font-size:13px;">Your Breathavia assessment will be sent to your email shortly.</em>
-  </div>
-  <div style="margin-top:28px;padding-top:22px;border-top:1px solid rgba(201,168,76,.2);">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;">Breathavia</div>
-    <div style="font-size:11px;color:#6b6358;letter-spacing:.1em;">Rééducation Respiratoire · Respiratory Retraining</div>
-  </div>
-</div>
+<!-- RÉSULTATS -->
+<div id="results"></div>
 
 <footer>
   <p>
-    Nijmegen Questionnaire — Van Dixhoorn &amp; Duivenvoorden (1985)<br>
-    PBM-S — Darkins, R.J. (2024). Australian Catholic University.<br>
-    Control Pause — McKeown, P. (2015). The Oxygen Advantage.<br><br>
+    <span data-i="foot_refs"></span><br><br>
     <span style="color:#C9A84C;">© Breathavia · hello@breathavia.com · breathavia.com</span>
   </p>
 </footer>
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-// Limite 3 checkboxes situation
-document.querySelectorAll('.situation-cb').forEach(function(cb){
-  cb.addEventListener('change',function(){
-    const checked=document.querySelectorAll('.situation-cb:checked');
-    if(checked.length>3){
-      this.checked=false;
-      document.getElementById('situation-hint').textContent='Maximum 3 situations · Maximum 3 situations';
-      document.getElementById('situation-hint').style.color='#E24B4A';
-      setTimeout(function(){
-        document.getElementById('situation-hint').textContent='Sélectionnez jusqu\'à 3 situations · Select up to 3 situations';
-        document.getElementById('situation-hint').style.color='var(--mid)';
-      },2000);
+// ============================================================
+// >>> À REMPLIR AVANT LA MISE EN LIGNE : [LIEN_POLITIQUE]
+// Remplacez la valeur de LIEN_POLITIQUE (juste en dessous) par l'adresse
+// de votre politique de confidentialité.
+// ============================================================
+// ============================================================
+// EMPLACEMENTS À REMPLIR : versions validées des outils
+// Remplacez chaque texte entre crochets [ ... ] par la version validée.
+// Les textes entre crochets s'affichent en jaune dans le formulaire.
+// ============================================================
+var LIEN_POLITIQUE = "[LIEN_POLITIQUE]";   // <<< [LIEN_POLITIQUE] à remplacer
+
+// TEXTES FRANÇAIS PROVISOIRES (traduction de travail): remplacez-les par vos versions validées.
+var TOOLS = {
+  nij: {
+    intro:  { fr: "Indiquez à quelle fréquence vous ressentez chacun des symptômes suivants.", en: "Please indicate how often you experience each of the following symptoms." },
+    scale:  { fr: ["Jamais","Rarement","Parfois","Souvent","Très souvent"], en: ["Never","Rarely","Sometimes","Often","Very often"] },
+    items:  {
+      fr: ["Douleur thoracique","Sensation de tension","Vision floue","Étourdissements","Sensation de confusion","Respiration plus rapide ou plus profonde","Essoufflement","Oppression dans la poitrine","Ballonnement au ventre","Fourmillements dans les doigts","Incapacité de respirer profondément","Raideur dans les doigts ou les bras","Sensation de tension autour de la bouche","Mains ou pieds froids","Palpitations","Sentiment d'anxiété"],
+      en: [
+        "Chest pain","Feeling tense","Blurred vision","Dizzy spells",
+        "Feeling confused","Faster or deeper breathing","Short of breath","Tight feelings in the chest",
+        "Bloated feeling in the stomach","Tingling fingers","Unable to breathe deeply","Stiffness in fingers or arms",
+        "Tight feelings around the mouth","Cold hands or feet","Palpitations","Feeling of anxiety"
+      ]
     }
+  },
+  godin: {
+    intro:  { fr: "Pensez à votre temps libre.", en: "Think about your free time." },
+    intenses: { fr: "Exemples: course, jogging, hockey, soccer, basketball, ski de fond, natation soutenue, vélo soutenu.", en: "Examples: running, jogging, hockey, soccer, basketball, cross-country skiing, vigorous swimming, vigorous cycling." },
+    moderees: { fr: "Exemples: marche rapide, tennis, vélo tranquille, volleyball, badminton, natation tranquille, ski alpin, danse.", en: "Examples: fast walking, tennis, easy cycling, volleyball, badminton, easy swimming, alpine skiing, dancing." },
+    legeres:  { fr: "Exemples: yoga, quilles, golf, pêche, marche tranquille.", en: "Examples: yoga, bowling, golf, fishing, easy walking." }
+  },
+  pss: {
+    intro:  { fr: "Les questions suivantes portent sur vos sentiments et vos pensées au cours du dernier mois. Indiquez à quelle fréquence vous vous êtes senti(e) ou avez pensé de cette façon.", en: "The following questions concern your feelings and thoughts during the last month. Please indicate how often you felt or thought this way." },
+    scale:  { fr: ["Jamais","Presque jamais","Parfois","Assez souvent","Souvent"], en: ["Never","Almost never","Sometimes","Fairly often","Very often"] },
+    items:  {
+      fr: ["Avez-vous senti que vous ne pouviez pas contrôler les choses importantes de votre vie?","Vous êtes-vous senti(e) confiant(e) dans votre capacité à gérer vos problèmes personnels?","Avez-vous senti que les choses allaient comme vous le souhaitiez?","Avez-vous senti que les difficultés s'accumulaient au point de ne pouvoir les surmonter?"],
+      en: ["Felt unable to control the important things in your life?","Felt confident about your ability to handle your personal problems?","Felt that things were going your way?","Felt difficulties were piling up so high that you could not overcome them?"]
+    },
+    reversed: [1, 2]
+  }
+};
+
+// ============================================================
+// TEXTES DE L'INTERFACE
+// ============================================================
+var T = {
+fr: {
+  h1:"Bilan Respiratoire Breathavia",
+  tagline:"Rééducation Respiratoire",
+  intro:"<strong>5 minutes pour évaluer vos trois piliers</strong>, à partir de questionnaires scientifiques reconnus. Ce bilan gratuit vous donne un premier aperçu de votre fonctionnement selon les 3 piliers Breathavia: Respiration, Mouvement et Conscience. Vos résultats s'affichent tout de suite et vous en recevez aussi une copie par courriel.<br><br><span style=\"color:#C9A84C;font-size:12px;\">Un bilan plus complet est disponible lors d'une séance individuelle.</span>",
+  s1_title:"Avant de commencer",
+  secu_assis:"Je suis assis(e), au repos, ni au volant ni près de l'eau.",
+  s2_title:"Indice de Confort Respiratoire (ICR)",
+  icr_desc:"L'Indice de Confort Respiratoire (ICR) indique combien de temps vous restez confortable avant le premier besoin net de respirer, après une expiration normale. C'est un repère simple de votre confort respiratoire au repos, utile pour suivre vos progrès.",
+  icr_protocol:"<strong>Protocole:</strong><br>1. Respirez normalement par le nez pendant 1 à 2 minutes.<br>2. Après une expiration normale, pincez le nez et appuyez sur Démarrer.<br>3. Appuyez sur Arrêter dès le premier besoin net de respirer (pas au maximum).<br>4. Relâchez le nez et reprenez une respiration calme.",
+  btn_start:"Démarrer", btn_stop:"Arrêter", btn_reset:"Recommencer",
+  icr_note:"Ne forcez jamais. Si vous vous sentez mal à l'aise, arrêtez et respirez normalement.",
+  icr_result_pre:"Votre ICR: ",
+  icr_short:"La mesure semble très courte. Voulez-vous recommencer ?",
+  icr_long:"Avez-vous oublié d'arrêter le chronomètre ? Vous pouvez recommencer la mesure.",
+  icr_required:"Veuillez effectuer la mesure de l'ICR avec le chronomètre.",
+  z0_range:"moins de 10 s", z0_label:"Zone de faible confort",
+  z1_range:"10 à 20 s", z1_label:"Zone de confort à développer",
+  z2_range:"20 à 40 s", z2_label:"Zone de confort intermédiaire",
+  z3_range:"plus de 40 s", z3_label:"Zone de confort élevée",
+  s3_title:"Recevez votre bilan complet en trois piliers",
+  s3_sub:"Il reste quelques questions courtes, puis vos résultats s'afficheront.",
+  lbl_prenom:"Prénom", lbl_email:"Adresse courriel", ph_prenom:"Prénom",
+  consent_a:"Je comprends que ce bilan est indicatif et non un diagnostic médical. J'accepte que Breathavia recueille mes réponses, y compris des renseignements de santé, pour calculer mon bilan et me l'envoyer par courriel.",
+  consent_b:"Je souhaite aussi recevoir des conseils et des nouvelles de Breathavia (facultatif). Vous pouvez vous désabonner en un clic, à tout moment.",
+  policy_line:"Vos renseignements sont traités conformément à notre <a class=\"pol\" href=\"#\" target=\"_blank\" rel=\"noopener\">politique de confidentialité</a>.",
+  btn_continue:"Continuer",
+  contact_err:"Veuillez cocher la case de consentement obligatoire (*), indiquer votre prénom et un courriel valide.",
+  btn_restart:"Recommencer", confirm_restart:"Effacer vos réponses et recommencer le bilan?",
+  s4_title:"Respiration", s4_sub:"Questionnaire de Nijmegen",
+  s5_title:"Mouvement", s5_sub:"Godin-Shephard et temps assis",
+  godin_q:"Au cours d'une semaine habituelle, combien de séances de plus de 15 minutes faites-vous?",
+  godin_int:"Séances intenses", godin_mod:"Séances modérées", godin_lig:"Séances légères",
+  assis_q:"Combien d'heures par jour passez-vous assis(e)?",
+  assis_1:"Moins de 4 h", assis_2:"4 à 6 h", assis_3:"6 à 8 h", assis_4:"8 h et plus",
+  s6_title:"Conscience", s6_sub:"Échelle de stress perçu (PSS-4)",
+  s7_title:"Votre profil",
+  portrait_q:"Quelle phrase vous ressemble le plus en ce moment?",
+  portrait_1:"Je tourne à plein régime toute la journée, et même le soir, j'ai du mal à décrocher.",
+  portrait_2:"Mon corps est tendu, raide, et je le sens surtout le soir.",
+  portrait_3:"Je fonctionne, mais j'ai l'impression d'être en pilote automatique, loin de moi-même.",
+  portrait_4:"Un peu de tout ça, selon les jours.",
+  obj_q:"Dans 3 mois, comment aimeriez-vous vous sentir? (plusieurs choix possibles)",
+  obj_1:"Mieux dormir et vraiment récupérer", obj_2:"Plus calme au quotidien", obj_3:"Plus d'énergie",
+  obj_4:"Plus détendu(e) dans mon corps", obj_5:"Plus présent(e), moins dans ma tête", obj_6:"Plus performant(e) à l'effort",
+  sante_q:"Avez-vous une condition respiratoire (comme l'asthme), une condition cardiaque, ou êtes-vous enceinte?",
+  yes:"Oui", no:"Non",
+  btn_submit:"Voir mon bilan", btn_sending:"Envoi en cours…",
+  submit_note:"Vos résultats s'affichent tout de suite et une copie vous est envoyée par courriel.",
+  err_missing:"Veuillez répondre à toutes les questions obligatoires (*) avant de continuer.",
+  foot_refs:"Questionnaire de Nijmegen: Van Dixhoorn &amp; Duivenvoorden (1985)<br>Godin-Shephard: Godin &amp; Shephard (1985)<br>PSS-4 : Cohen et Williamson (1988)<br>Version française adaptée par Breathavia.",
+  // Résultats
+  res_title:"Votre bilan Breathavia", res_hello:"Bonjour",
+  res_copy:"Une copie de votre bilan vous est aussi envoyée par courriel.",
+  res_pillars:"Vos trois piliers",
+  p_resp:"Respiration", p_mouv:"Mouvement", p_cons:"Conscience",
+  lv0:"À développer", lv1:"Intermédiaire", lv2:"Solide",
+  res_priority:"Votre pilier prioritaire",
+  expl_resp:"La respiration est la base: elle influence votre énergie, votre sommeil et votre capacité à récupérer. Travailler votre confort respiratoire et le rythme de votre souffle est souvent le point de départ le plus utile.",
+  expl_mouv:"Le mouvement donne à la respiration l'espace pour se déployer: un thorax mobile et un corps actif soutiennent un souffle plus fluide. Bouger régulièrement et réduire les longues périodes assises est un bon premier levier.",
+  expl_cons:"La conscience relie le souffle à votre état intérieur: percevoir votre respiration aide à ralentir et à mieux récupérer. Quelques minutes d'attention régulière peuvent déjà changer votre façon de traverser les journées chargées.",
+  cross_none:"Vous décrivez un peu de tout, selon les jours. Vos réponses suggèrent de commencer par le pilier {X}.",
+  cross_confirm:"Vos réponses confirment ce que vous décrivez: le pilier {P} est un bon point de départ.",
+  cross_diff:"Vous vous sentez {feel}, mais vos réponses montrent que le pilier {X} est celui qui a le plus de place pour progresser.",
+  feel_plein_regime:"à plein régime", feel_tendu:"tendu(e) dans votre corps", feel_pilote_auto:"en pilote automatique",
+  res_icr:"Votre ICR", res_seconds:"secondes",
+  res_exercise:"Un exercice à faire ce soir",
+  res_details:"Voir mes scores détaillés",
+  d_icr:"Indice de Confort Respiratoire (ICR)",
+  d_nij:"Questionnaire de Nijmegen (0 à 64)",
+  d_godin:"Godin-Shephard (intenses × 9 + modérées × 5)",
+  d_assis:"Temps assis par jour",
+  d_pss:"PSS-4 (0 à 16)",
+  warn_sante:"Vous avez indiqué une condition respiratoire, une condition cardiaque ou une grossesse. Parlez-en à votre professionnel de santé avant d'essayer l'exercice proposé, et ne forcez jamais.",
+  res_limits_h:"Limites de ce bilan",
+  res_limits:"Ce bilan s'appuie sur des questionnaires scientifiques reconnus, mais ce n'est pas un diagnostic et il ne remplace pas une évaluation médicale. Votre ICR peut varier selon l'heure, le stress ou le sommeil. Ne modifiez jamais une médication en fonction de ce résultat. Les niveaux par pilier sont des repères indicatifs établis par Breathavia.",
+  res_next:"Pour aller plus loin, vous pouvez écrire à hello@breathavia.com ou visiter breathavia.com.",
+  res_author:"Bilan conçu par Adnan Mehanovic, ostéopathe depuis 20 ans et seul instructeur Buteyko certifié au Québec.",
+  ex_redo:"Refaites votre ICR dans 7 jours, au réveil, dans les mêmes conditions.",
+  all_solid:"Vos trois piliers sont solides. Vous pouvez aller plus loin en affinant le pilier {X}.",
+  ex_resp_t:"Respiration douce (3 minutes)",
+  ex_resp:["Asseyez-vous confortablement, une main sur le ventre.","Respirez doucement par le nez, en laissant l'air entrer sans effort.","Allongez légèrement l'expiration, comme si vous souffliez doucement sans faire vaciller une bougie.","Poursuivez 3 minutes à un rythme confortable. En cas d'inconfort, revenez à votre respiration normale."],
+  ex_mouv_t:"Mobilité du thorax (4 minutes)",
+  ex_mouv:["Debout ou assis(e), placez les mains derrière la tête.","Tournez lentement le buste d'un côté puis de l'autre, 10 fois, en expirant pendant la rotation.","Levez les bras en inspirant par le nez, relâchez en expirant, 8 fois.","Terminez par 1 minute de respiration calme, mains sur les côtes, en sentant les côtes s'écarter."],
+  ex_cons_t:"Ancrage attentif (3 minutes)",
+  ex_cons:["Asseyez-vous, fermez les yeux ou fixez un point devant vous.","Portez votre attention sur l'air qui entre et sort par les narines.","Quand l'esprit s'éloigne, ramenez doucement l'attention, sans vous juger.","Terminez en nommant mentalement trois sensations dans votre corps."],
+  btn_lang:"English"
+},
+en: {
+  h1:"Breathavia Respiratory Assessment",
+  tagline:"Respiratory Retraining",
+  intro:"<strong>5 minutes to assess your three pillars</strong>, based on recognized scientific questionnaires. This free assessment gives you a first overview of how you function across the 3 Breathavia pillars: Breathing, Movement and Awareness. Your results appear right away and you also receive a copy by email.<br><br><span style=\"color:#C9A84C;font-size:12px;\">A more complete assessment is available during an individual session.</span>",
+  s1_title:"Before you begin",
+  secu_assis:"I am seated and at rest, and I am not driving or near water.",
+  s2_title:"Breathing Comfort Index (BCI)",
+  icr_desc:"The Breathing Comfort Index shows how long you stay comfortable before the first definite urge to breathe, after a normal exhale. It is a simple benchmark of your breathing comfort at rest, useful for tracking your progress.",
+  icr_protocol:"<strong>Protocol:</strong><br>1. Breathe normally through your nose for 1 to 2 minutes.<br>2. After a normal exhale, pinch your nose and press Start.<br>3. Press Stop at the first definite urge to breathe (not your maximum).<br>4. Release your nose and resume calm breathing.",
+  btn_start:"Start", btn_stop:"Stop", btn_reset:"Reset",
+  icr_note:"Never force it. If you feel uncomfortable, stop and breathe normally.",
+  icr_result_pre:"Your BCI: ",
+  icr_short:"The measurement seems very short. Would you like to start over?",
+  icr_long:"Did you forget to stop the timer? You can restart the measurement.",
+  icr_required:"Please complete the Breathing Comfort Index measurement with the timer.",
+  z0_range:"under 10 s", z0_label:"Low comfort zone",
+  z1_range:"10 to 20 s", z1_label:"Comfort zone to develop",
+  z2_range:"20 to 40 s", z2_label:"Intermediate comfort zone",
+  z3_range:"over 40 s", z3_label:"High comfort zone",
+  s3_title:"Receive your full three-pillar assessment",
+  s3_sub:"A few short questions remain, then your results will appear.",
+  lbl_prenom:"First name", lbl_email:"Email address", ph_prenom:"First name",
+  consent_a:"I understand that this assessment is indicative and not a medical diagnosis. I agree that Breathavia collects my answers, including health information, to calculate my assessment and send it to me by email.",
+  consent_b:"I would also like to receive tips and news from Breathavia (optional). You can unsubscribe in one click, at any time.",
+  policy_line:"Your information is handled in accordance with our <a class=\"pol\" href=\"#\" target=\"_blank\" rel=\"noopener\">privacy policy</a>.",
+  btn_continue:"Continue",
+  contact_err:"Please tick the required consent box (*), enter your first name and a valid email address.",
+  btn_restart:"Start over", confirm_restart:"Erase your answers and start the assessment over?",
+  s4_title:"Breathing", s4_sub:"Nijmegen Questionnaire",
+  s5_title:"Movement", s5_sub:"Godin-Shephard and sitting time",
+  godin_q:"In a typical week, how many sessions of more than 15 minutes do you do?",
+  godin_int:"Strenuous sessions", godin_mod:"Moderate sessions", godin_lig:"Mild sessions",
+  assis_q:"How many hours per day do you spend sitting?",
+  assis_1:"Less than 4 h", assis_2:"4 to 6 h", assis_3:"6 to 8 h", assis_4:"8 h or more",
+  s6_title:"Awareness", s6_sub:"Perceived Stress Scale (PSS-4)",
+  s7_title:"Your profile",
+  portrait_q:"Which sentence sounds most like you right now?",
+  portrait_1:"I run at full speed all day, and even in the evening I have trouble switching off.",
+  portrait_2:"My body feels tense and stiff, and I notice it mostly in the evening.",
+  portrait_3:"I function, but I feel like I'm on autopilot, far from myself.",
+  portrait_4:"A bit of all of that, depending on the day.",
+  obj_q:"In 3 months, how would you like to feel? (multiple choices allowed)",
+  obj_1:"Sleep better and truly recover", obj_2:"Calmer in daily life", obj_3:"More energy",
+  obj_4:"More relaxed in my body", obj_5:"More present, less in my head", obj_6:"Perform better during effort",
+  sante_q:"Do you have a respiratory condition (such as asthma), a heart condition, or are you pregnant?",
+  yes:"Yes", no:"No",
+  btn_submit:"See my assessment", btn_sending:"Sending…",
+  submit_note:"Your results appear right away and a copy is sent to you by email.",
+  err_missing:"Please answer all required questions (*) before continuing.",
+  foot_refs:"Nijmegen Questionnaire: Van Dixhoorn &amp; Duivenvoorden (1985)<br>Godin-Shephard: Godin &amp; Shephard (1985)<br>PSS-4: Cohen &amp; Williamson (1988)<br>French version adapted by Breathavia.",
+  res_title:"Your Breathavia assessment", res_hello:"Hello",
+  res_copy:"A copy of your assessment is also being sent to you by email.",
+  res_pillars:"Your three pillars",
+  p_resp:"Breathing", p_mouv:"Movement", p_cons:"Awareness",
+  lv0:"To develop", lv1:"Intermediate", lv2:"Solid",
+  res_priority:"Your priority pillar",
+  expl_resp:"Breathing is the foundation: it influences your energy, your sleep and your ability to recover. Working on your breathing comfort and the rhythm of your breath is often the most useful starting point.",
+  expl_mouv:"Movement gives breathing room to unfold: a mobile chest and an active body support a smoother breath. Moving regularly and reducing long periods of sitting is a good first lever.",
+  expl_cons:"Awareness connects your breath to your inner state: noticing your breathing helps you slow down and recover better. A few minutes of regular attention can already change how you move through busy days.",
+  cross_none:"You describe a bit of everything, depending on the day. Your answers suggest starting with the {X} pillar.",
+  cross_confirm:"Your answers confirm what you describe: the {P} pillar is a good place to start.",
+  cross_diff:"You feel {feel}, but your answers show that the {X} pillar is the one with the most room to grow.",
+  feel_plein_regime:"at full speed", feel_tendu:"tense in your body", feel_pilote_auto:"on autopilot",
+  res_icr:"Your BCI", res_seconds:"seconds",
+  res_exercise:"An exercise to try tonight",
+  res_details:"See my detailed scores",
+  d_icr:"Breathing Comfort Index (BCI)",
+  d_nij:"Nijmegen Questionnaire (0 to 64)",
+  d_godin:"Godin-Shephard (strenuous × 9 + moderate × 5)",
+  d_assis:"Sitting time per day",
+  d_pss:"PSS-4 (0 to 16)",
+  warn_sante:"You indicated a respiratory condition, a heart condition or a pregnancy. Please talk to your health professional before trying the suggested exercise, and never force it.",
+  res_limits_h:"Limits of this assessment",
+  res_limits:"This assessment relies on recognized scientific questionnaires, but it is not a diagnosis and it does not replace a medical evaluation. Your BCI can vary with the time of day, stress or sleep. Never change a medication based on this result. The pillar levels are indicative benchmarks established by Breathavia.",
+  res_next:"To go further, you can write to hello@breathavia.com or visit breathavia.com.",
+  res_author:"Assessment designed by Adnan Mehanovic, osteopath for 20 years and the only certified Buteyko instructor in Quebec.",
+  ex_redo:"Redo your BCI in 7 days, upon waking, under the same conditions.",
+  all_solid:"Your three pillars are solid. You can go further by refining the {X} pillar.",
+  ex_resp_t:"Gentle breathing (3 minutes)",
+  ex_resp:["Sit comfortably, one hand on your belly.","Breathe gently through your nose, letting the air come in without effort.","Lengthen the exhale slightly, as if gently blowing without making a candle flicker.","Continue for 3 minutes at a comfortable pace. If you feel discomfort, return to normal breathing."],
+  ex_mouv_t:"Chest mobility (4 minutes)",
+  ex_mouv:["Standing or seated, place your hands behind your head.","Slowly rotate your torso to one side then the other, 10 times, exhaling during the rotation.","Raise your arms while inhaling through the nose, release while exhaling, 8 times.","Finish with 1 minute of calm breathing, hands on your ribs, feeling them widen."],
+  ex_cons_t:"Attentive anchoring (3 minutes)",
+  ex_cons:["Sit down, close your eyes or rest your gaze on a point in front of you.","Bring your attention to the air moving in and out through your nostrils.","When your mind wanders, gently bring your attention back without judging yourself.","Finish by silently naming three sensations in your body."],
+  btn_lang:"Français"
+}
+};
+
+var LANG='fr';
+try{var sv=localStorage.getItem('breathavia_bilan_lang');if(sv==='en'||sv==='fr')LANG=sv;}catch(e){}
+function t(k){return (T[LANG][k]!==undefined)?T[LANG][k]:k;}
+
+// ---------- Construction des tableaux d'items ----------
+function buildScaleTable(headId,bodyId,prefix,count){
+  var head=document.getElementById(headId),body=document.getElementById(bodyId);
+  var th='<th></th>';
+  for(var v=0;v<5;v++){th+='<th><span class="scale-lbl" data-pref="'+prefix+'" data-v="'+v+'"></span><br><small>'+v+'</small></th>';}
+  head.innerHTML=th;
+  var rows='';
+  for(var i=0;i<count;i++){
+    rows+='<tr><td><span class="item-txt" data-pref="'+prefix+'" data-idx="'+i+'"></span></td>';
+    for(var v2=0;v2<5;v2++){rows+='<td class="cell"><label class="cellbtn"><input type="radio" name="'+prefix+(i+1)+'" value="'+v2+'"><span class="num">'+v2+'</span></label></td>';}
+    rows+='<td class="m-ends"><span class="scale-lbl" data-pref="'+prefix+'" data-v="0"></span><span class="scale-lbl" data-pref="'+prefix+'" data-v="4"></span></td></tr>';
+  }
+  body.innerHTML=rows;
+}
+buildScaleTable('nij_head','nij_body','nij',16);
+buildScaleTable('pss_head','pss_body','pss',4);
+
+function setPh(el,txt){
+  el.textContent=txt;
+  if(txt.charAt(0)==='[')el.classList.add('ph');else el.classList.remove('ph');
+}
+function setBi(el,pair){setPh(el,pair[LANG]);}
+function applyLang(){
+  document.documentElement.lang=LANG;
+  document.getElementById('hidden_langue').value=LANG;
+  document.getElementById('lang-btn').textContent=t('btn_lang');
+  document.querySelectorAll('[data-i]').forEach(function(el){el.innerHTML=t(el.getAttribute('data-i'));});
+  document.querySelectorAll('[data-ip]').forEach(function(el){el.placeholder=t(el.getAttribute('data-ip'));});
+  document.querySelectorAll('.item-txt').forEach(function(el){
+    var p=el.getAttribute('data-pref'),i=parseInt(el.getAttribute('data-idx'));
+    setBi(el,{fr:TOOLS[p].items.fr[i],en:TOOLS[p].items.en[i]});
+  });
+  document.querySelectorAll('.scale-lbl').forEach(function(el){
+    el.textContent=TOOLS[el.getAttribute('data-pref')].scale[LANG][parseInt(el.getAttribute('data-v'))];
+  });
+  setBi(document.getElementById('nij_intro'),TOOLS.nij.intro);
+  setBi(document.getElementById('pss_intro'),TOOLS.pss.intro);
+  setPh(document.getElementById('godin_intro'),TOOLS.godin.intro[LANG]);
+  setPh(document.getElementById('godin_int_ph'),TOOLS.godin.intenses[LANG]);
+  setPh(document.getElementById('godin_mod_ph'),TOOLS.godin.moderees[LANG]);
+  setPh(document.getElementById('godin_lig_ph'),TOOLS.godin.legeres[LANG]);
+  document.querySelectorAll('a.pol').forEach(function(a){a.href=LIEN_POLITIQUE;});
+  if(lastICR!==null)showICR(lastICR);
+  if(lastResult)renderResults(lastResult);
+}
+document.getElementById('lang-btn').addEventListener('click',function(){
+  LANG=(LANG==='fr')?'en':'fr';
+  try{localStorage.setItem('breathavia_bilan_lang',LANG);}catch(e){}
+  applyLang();
+});
+
+// ---------- Chronomètre ICR ----------
+var lastICR=null;
+function zoneIndex(s){return s<10?0:(s<20?1:(s<=40?2:3));}
+function showICR(s){
+  var z=zoneIndex(s);
+  document.getElementById('icr_warn').textContent=(s<3)?t('icr_short'):((s>60)?t('icr_long'):'');
+  document.getElementById('icr_result').textContent=t('icr_result_pre')+s.toFixed(1)+' s · '+t('z'+z+'_label');
+  for(var k=0;k<4;k++){document.getElementById('zone'+k).classList.toggle('active',k===z);}
+}
+(function(){
+  var t0=0,iv=null;
+  var d=document.getElementById('icr_display'),b1=document.getElementById('icr_start'),b2=document.getElementById('icr_stop'),b3=document.getElementById('icr_reset'),chk=document.getElementById('secu_assis'),hid=document.getElementById('icr_score');
+  function tick(){d.textContent=((Date.now()-t0)/1000).toFixed(1);}
+  function refresh(){if(!iv)b1.disabled=!chk.checked;}
+  chk.addEventListener('change',refresh);
+  b1.onclick=function(){
+    if(!chk.checked)return;
+    t0=Date.now();clearInterval(iv);iv=setInterval(tick,100);
+    b1.disabled=true;b2.disabled=false;
+    document.getElementById('icr_result').textContent='';
+    document.getElementById('icr_warn').textContent='';
+    for(var k=0;k<4;k++)document.getElementById('zone'+k).classList.remove('active');
+  };
+  b2.onclick=function(){
+    clearInterval(iv);iv=null;
+    var s=Math.round((Date.now()-t0)/100)/10;
+    d.textContent=s.toFixed(1);hid.value=s;lastICR=s;
+    b2.disabled=true;refresh();showICR(s);
+    document.getElementById('bilan-form').dispatchEvent(new Event('change',{bubbles:true}));
+  };
+  b3.onclick=function(){
+    clearInterval(iv);iv=null;d.textContent='0.0';hid.value='';lastICR=null;
+    document.getElementById('icr_result').textContent='';
+    document.getElementById('icr_warn').textContent='';
+    for(var k=0;k<4;k++)document.getElementById('zone'+k).classList.remove('active');
+    b2.disabled=true;refresh();
+    document.getElementById('bilan-form').dispatchEvent(new Event('change',{bubbles:true}));
+  };
+})();
+
+// ---------- Calculs ----------
+function radioVal(name){var s=document.querySelector('input[name="'+name+'"]:checked');return s?parseInt(s.value):null;}
+function normGodin(id){
+  var el=document.getElementById(id),v=el.value.trim().replace(',','.');
+  if(v==='')return;
+  var n=parseFloat(v);
+  if(isNaN(n)){el.value='';return;}
+  el.value=Math.min(30,Math.max(0,Math.round(n)));
+}
+function numVal(id){normGodin(id);var v=document.getElementById(id).value;return v===''?null:parseFloat(v);}
+['godin_intenses','godin_moderees','godin_legeres'].forEach(function(id){
+  var el=document.getElementById(id);
+  el.addEventListener('input',function(){
+    var c=el.value.replace(/[^0-9.,]/g,'');
+    if(/^[0-9]+$/.test(c)&&parseInt(c,10)>30)c='30';
+    if(c!==el.value)el.value=c;
+  });
+  el.addEventListener('blur',function(){normGodin(id);saveState();updateProgress();});
+});
+document.querySelectorAll('.stepper button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var id=btn.getAttribute('data-target'),el=document.getElementById(id);
+    normGodin(id);
+    var n=el.value===''?0:parseInt(el.value,10);
+    n+=btn.classList.contains('st-plus')?1:-1;
+    el.value=Math.min(30,Math.max(0,n));
+    el.dispatchEvent(new Event('input',{bubbles:true}));
   });
 });
 
-// Score Nijmegen (8 items, max 32)
-function calcNijmegen(){
-  const items=['nq2','nq4','nq6','nq7','nq8','nq10','nq15','nq16'];
-  let total=0,filled=0;
-  items.forEach(function(name){
-    const sel=document.querySelector('input[name="'+name+'"]:checked');
-    if(sel){total+=parseInt(sel.value);filled++;}
+// Mobile: défilement doux vers l'énoncé suivant
+var mqMobile=window.matchMedia('(max-width:580px)');
+['nij_body','pss_body'].forEach(function(id){
+  document.getElementById(id).addEventListener('change',function(e){
+    if(!mqMobile.matches||!e.target||e.target.type!=='radio')return;
+    var next=e.target.closest('tr').nextElementSibling;
+    if(!next||next.querySelector('input:checked'))return;
+    setTimeout(function(){next.scrollIntoView({behavior:'smooth',block:'center'});},220);
   });
-  const el=document.getElementById('nq-score');
-  if(filled===0){el.textContent='—';document.getElementById('hidden_nq_score').value='';return;}
-  el.textContent=total+' / 32';
-  el.style.color=total>11?'#8B2E2E':'#1A5C38';
-  document.getElementById('hidden_nq_score').value=total+' / 32';
+});
+
+function compute(){
+  var nij=[],nijTotal=0,i;
+  for(i=1;i<=16;i++){var v=radioVal('nij'+i);nij.push(v);nijTotal+=v;}
+  var pss=[],pssTotal=0;
+  for(i=1;i<=4;i++){
+    var p=radioVal('pss'+i);
+    if(TOOLS.pss.reversed.indexOf(i-1)>-1)p=4-p;
+    pss.push(p);pssTotal+=p;
+  }
+  var icr=parseFloat(document.getElementById('icr_score').value);
+  var godin=(numVal('godin_intenses')||0)*9+(numVal('godin_moderees')||0)*5;
+  var assis=document.querySelector('input[name="assis"]:checked').value;
+  var sitLow=(assis==='moins4'||assis==='4a6'||assis==='6a8');
+
+  var lvResp=(nijTotal>=23||icr<10)?0:((nijTotal<23&&icr>=20)?2:1);
+  var lvMouv=(godin<14)?0:((godin>=24&&sitLow)?2:1);
+  var lvCons=(pssTotal>=10)?0:((pssTotal<=5)?2:1);
+
+  var portrait=document.querySelector('input[name="portrait"]:checked').value;
+  var portraitPillar={plein_regime:'resp',tendu:'mouv',pilote_auto:'cons',melange:null}[portrait];
+  var levels={resp:lvResp,mouv:lvMouv,cons:lvCons};
+  var order=['resp','mouv','cons'];
+  var min=Math.min(lvResp,lvMouv,lvCons);
+  var tied=order.filter(function(k){return levels[k]===min;});
+  var priority=(portraitPillar&&tied.indexOf(portraitPillar)>-1)?portraitPillar:tied[0];
+
+  var objectifs=[];
+  document.querySelectorAll('input[name="objectif"]:checked').forEach(function(c){objectifs.push(c.value);});
+
+  return {
+    prenom:document.getElementById('prenom').value.trim(),
+    icr:icr, nijTotal:nijTotal, nij:nij, pssTotal:pssTotal, pss:pss, godin:godin,
+    godinInt:numVal('godin_intenses')||0, godinMod:numVal('godin_moderees')||0, godinLeg:numVal('godin_legeres')||0,
+    assis:assis, levels:levels, priority:priority, portrait:portrait, portraitPillar:portraitPillar,
+    objectifs:objectifs, sante:document.querySelector('input[name="condition_sante"]:checked').value
+  };
 }
-document.querySelectorAll('input[name^="nq"]').forEach(function(r){r.addEventListener('change',calcNijmegen);});
 
-// Date locale
-const dateAujourdhui=new Date();
-const yyyy=dateAujourdhui.getFullYear();
-const mm=String(dateAujourdhui.getMonth()+1).padStart(2,'0');
-const dd=String(dateAujourdhui.getDate()).padStart(2,'0');
+// ---------- Validation ----------
+function validate(){
+  var fails=[];
+  if(!document.getElementById('secu_assis').checked)fails.push('secu_assis');
+  if(document.getElementById('icr_score').value==='')fails.push('icr_display');
+  if(!document.getElementById('prenom').value.trim())fails.push('prenom');
+  var em=document.getElementById('email').value.trim();
+  if(!em||em.indexOf('@')<1||em.indexOf('.',em.indexOf('@'))<0)fails.push('email');
+  if(!document.getElementById('consent_resultats').checked)fails.push('consent_resultats');
+  var i;
+  for(i=1;i<=16;i++){if(radioVal('nij'+i)===null){fails.push('nij_table');break;}}
+  if(numVal('godin_intenses')===null)fails.push('godin_intenses');
+  else if(numVal('godin_moderees')===null)fails.push('godin_moderees');
+  else if(numVal('godin_legeres')===null)fails.push('godin_legeres');
+  if(!document.querySelector('input[name="assis"]:checked'))fails.push('assis_group');
+  for(i=1;i<=4;i++){if(radioVal('pss'+i)===null){fails.push('pss_body');break;}}
+  if(!document.querySelector('input[name="portrait"]:checked'))fails.push('portrait_q');
+  if(!document.querySelector('input[name="condition_sante"]:checked'))fails.push('sante_q');
+  return fails;
+}
 
-// Submit
-document.getElementById('bilan-form').addEventListener('submit',async function(e){
-  e.preventDefault();
-  if(!document.getElementById('consent_check').checked){
-    alert('Veuillez cocher la case de consentement.\nPlease check the consent box.');
+// ---------- Résultats ----------
+var lastResult=null;
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function pillarName(k){return t({resp:'p_resp',mouv:'p_mouv',cons:'p_cons'}[k]);}
+function renderResults(r){
+  var h='';
+  h+='<div class="res-hero"><h2>'+t('res_title')+'</h2><p>'+t('res_hello')+(r.prenom?' '+esc(r.prenom):'')+'. '+t('res_copy')+'</p></div>';
+  if(r.sante==='oui')h+='<div class="res-sec"><div class="warn">'+t('warn_sante')+'</div></div>';
+
+  h+='<div class="res-sec"><h3>'+t('res_pillars')+'</h3>';
+  ['resp','mouv','cons'].forEach(function(k){
+    var lv=r.levels[k],w=[34,67,100][lv];
+    h+='<div class="pillar"><div class="pillar-top"><span class="pillar-name">'+pillarName(k)+'</span><span class="pillar-level lv'+lv+'">'+t('lv'+lv)+'</span></div><div class="bar-bg"><div class="bar-fill bf'+lv+'" style="width:'+w+'%"></div></div></div>';
+  });
+  h+='</div>';
+
+  var X=pillarName(r.priority);
+  var cross;
+  if(!r.portraitPillar){cross=t('cross_none').replace('{X}',X);}
+  else if(r.portraitPillar===r.priority){cross=t('cross_confirm').replace('{P}',pillarName(r.portraitPillar));}
+  else{cross=t('cross_diff').replace('{feel}',t('feel_'+r.portrait)).replace('{X}',X);}
+  var allSolid=(r.levels.resp===2&&r.levels.mouv===2&&r.levels.cons===2);
+  if(allSolid){
+    h+='<div class="res-sec"><h3>'+t('res_priority')+'</h3><div class="priority-card">'+t('all_solid').replace('{X}','<strong>'+X+'</strong>')+'</div></div>';
+  }else{
+    h+='<div class="res-sec"><h3>'+t('res_priority')+'</h3><div class="priority-card"><strong>'+X+'</strong><br>'+t('expl_'+r.priority)+'</div><div class="cross">'+cross+'</div></div>';
+  }
+
+  var z=zoneIndex(r.icr);
+  h+='<div class="res-sec"><h3>'+t('res_icr')+'</h3><div class="icr-big">'+r.icr.toFixed(1)+' <span style="font-size:15px;font-weight:400;">'+t('res_seconds')+'</span></div><div class="cp-zone '+['z-red','z-orange','z-yellow','z-green'][z]+' active" style="display:inline-block;margin-top:8px;padding:8px 14px;font-size:13px;">'+t('z'+z+'_label')+'</div></div>';
+
+  h+='<div class="res-sec"><h3>'+t('res_exercise')+'</h3><div class="ex-title">'+t('ex_'+r.priority+'_t')+'</div><ol class="ex-list">';
+  T[LANG]['ex_'+r.priority].forEach(function(s){h+='<li>'+s+'</li>';});
+  h+='</ol><p class="hint" style="margin-top:12px;font-size:13px;">'+t('ex_redo')+'</p></div>';
+
+  var assisTxt={moins4:'assis_1',"4a6":'assis_2',"6a8":'assis_3',"8plus":'assis_4'}[r.assis];
+  h+='<div class="res-sec"><details class="det"><summary>'+t('res_details')+'</summary><table>'
+    +'<tr><td>'+t('d_icr')+'</td><td>'+r.icr.toFixed(1)+' s</td></tr>'
+    +'<tr><td>'+t('d_nij')+'</td><td>'+r.nijTotal+' / 64</td></tr>'
+    +'<tr><td>'+t('d_godin')+'</td><td>'+r.godin+'</td></tr>'
+    +'<tr><td>'+t('d_assis')+'</td><td>'+t(assisTxt)+'</td></tr>'
+    +'<tr><td>'+t('d_pss')+'</td><td>'+r.pssTotal+' / 16</td></tr>'
+    +'</table></details></div>';
+
+  h+='<div class="res-sec"><div class="limits"><strong>'+t('res_limits_h')+'</strong><br>'+t('res_limits')+'<br><br>'+t('res_next')+'<br><br><em>'+t('res_author')+'</em></div></div>';
+  h+='<div class="res-sec" style="text-align:center;"><button type="button" class="btn-secondary" id="reset-btn-res">'+t('btn_restart')+'</button></div>';
+  document.getElementById('results').innerHTML=h;
+  var rb=document.getElementById('reset-btn-res');if(rb)rb.addEventListener('click',doReset);
+}
+
+// ---------- Envoi ----------
+var SCRIPT_URL='https://script.google.com/macros/s/AKfycbwX0qjB77df_n07T7Sma6Ww9Ef4VChcM_v7Jo_DM6znP7b7aKNsI-IAZJJ3A7jcIyQ/exec';
+var LV_NAMES=['a_developper','intermediaire','solide'];
+var STORE_KEY='breathavia_bilan_state_v2';
+
+function localDate(){var n=new Date();return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0');}
+function post(data){
+  try{fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(data),headers:{'Content-Type':'application/json'}});}
+  catch(ex){console.error('Submit error:',ex);}
+}
+function contactData(){
+  var prenom=document.getElementById('prenom').value.trim();
+  return {
+    type_formulaire:'bilan_public',
+    prenom:prenom,
+    nom:prenom,
+    email:document.getElementById('email').value.trim(),
+    consent_resultats:document.getElementById('consent_resultats').checked?'oui':'non',
+    consent_marketing:document.getElementById('consent_marketing').checked?'oui':'non',
+    consent_horodatage:new Date().toISOString(),
+    icr_score:document.getElementById('icr_score').value,
+    cp_score:document.getElementById('icr_score').value,
+    langue:LANG,
+    date_soumission:localDate()
+  };
+}
+function contactValid(){
+  var fails=[];
+  if(!document.getElementById('secu_assis').checked)fails.push('secu_assis');
+  if(document.getElementById('icr_score').value==='')fails.push('icr_display');
+  if(!document.getElementById('prenom').value.trim())fails.push('prenom');
+  var em=document.getElementById('email').value.trim();
+  if(!em||em.indexOf('@')<1||em.indexOf('.',em.indexOf('@'))<0)fails.push('email');
+  if(!document.getElementById('consent_resultats').checked)fails.push('consent_resultats');
+  return fails;
+}
+document.getElementById('continue-btn').addEventListener('click',function(){
+  var err=document.getElementById('contact-error');
+  var fails=contactValid();
+  if(fails.length){
+    err.textContent=(fails[0]==='icr_display'||fails[0]==='secu_assis')?t('icr_required'):t('contact_err');
+    var target=document.getElementById(fails[0]);
+    if(target)target.scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
-  const btn=document.getElementById('submit-btn');
-  btn.textContent='Envoi en cours… / Sending…';
-  btn.disabled=true;
+  err.textContent='';
+  saveState();
+  var next=document.querySelector('#bilan-form .section:nth-of-type(4)');
+  if(next)next.scrollIntoView({behavior:'smooth',block:'start'});
+});
 
-  calcNijmegen();
+document.getElementById('bilan-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var err=document.getElementById('form-error');
+  var fails=validate();
+  if(fails.length){
+    err.textContent=(fails[0]==='icr_display'?t('icr_required'):t('err_missing'));
+    var target=document.getElementById(fails[0]);
+    if(target)target.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  err.textContent='';
+  var btn=document.getElementById('submit-btn');
+  btn.textContent=t('btn_sending');btn.disabled=true;
 
-  const formData=new FormData(document.getElementById('bilan-form'));
-  const data={};
+  ['godin_intenses','godin_moderees','godin_legeres'].forEach(normGodin);
+  var r=compute();
+  lastResult=r;
+
+  var data=contactData();
+  var formData=new FormData(document.getElementById('bilan-form'));
   formData.forEach(function(v,k){
-    if(data[k]){data[k]=data[k]+', '+v;}
-    else{data[k]=v;}
+    if(k==='consent_resultats'||k==='consent_marketing'||k==='prenom'||k==='email')return;
+    if(data[k]!==undefined&&k!=='type_formulaire'&&k!=='langue'&&k!=='icr_score'){data[k]=data[k]+', '+v;}
+    else if(data[k]===undefined){data[k]=v;}
   });
-  data['Score_Nijmegen']=document.getElementById('hidden_nq_score').value||'—';
-  data['date_soumission']=yyyy+'-'+mm+'-'+dd;
+  data.icr_score=String(r.icr);
+  data.cp_score=String(r.icr);
+  data.Score_Nijmegen=r.nijTotal+' / 64';
+  data.nijmegen_total=String(r.nijTotal);
+  data.godin_score=String(r.godin);
+  data.pss4_total=String(r.pssTotal);
+  data.niveau_respiration=LV_NAMES[r.levels.resp];
+  data.niveau_mouvement=LV_NAMES[r.levels.mouv];
+  data.niveau_conscience=LV_NAMES[r.levels.cons];
+  data.pilier_prioritaire=r.priority;
+  data.objectifs=r.objectifs.join(', ');
+  data.langue=LANG;
+  post(data);
 
-  try{
-    fetch('https://script.google.com/macros/s/AKfycbwX0qjB77df_n07T7Sma6Ww9Ef4VChcM_v7Jo_DM6znP7b7aKNsI-IAZJJ3A7jcIyQ/exec',{
-      method:'POST',
-      mode:'no-cors',
-      body:JSON.stringify(data),
-      headers:{'Content-Type':'application/json'}
-    });
-  }catch(err){console.error('Submit error:',err);}
-
+  try{localStorage.removeItem(STORE_KEY);}catch(ex){}
+  renderResults(r);
   document.getElementById('bilan-form').style.display='none';
-  document.getElementById('merci-section').style.display='block';
+  document.getElementById('results').style.display='block';
+  document.getElementById('progress-bar').classList.add('hidden');
   window.scrollTo({top:0,behavior:'smooth'});
 });
+
+// ---------- Progression ----------
+function answered(names){var n=0;names.forEach(function(nm){if(document.querySelector('input[name="'+nm+'"]:checked'))n++;});return n;}
+function updateProgress(){
+  var nijNames=[],i;for(i=1;i<=16;i++)nijNames.push('nij'+i);
+  var respDone=answered(nijNames)+(document.getElementById('icr_score').value!==''?1:0);
+  var respTot=17;
+  var movDone=(document.getElementById('godin_intenses').value!==''?1:0)+(document.getElementById('godin_moderees').value!==''?1:0)+(document.getElementById('godin_legeres').value!==''?1:0)+answered(['assis']);
+  var movTot=4;
+  var consDone=answered(['pss1','pss2','pss3','pss4','portrait','condition_sante']);
+  var consTot=6;
+  [['resp',respDone,respTot],['mouv',movDone,movTot],['cons',consDone,consTot]].forEach(function(x){
+    document.getElementById('pgf_'+x[0]).style.width=Math.round(100*x[1]/x[2])+'%';
+    document.getElementById('pg_'+x[0]).classList.toggle('done',x[1]===x[2]);
+  });
+}
+
+// ---------- Sauvegarde locale ----------
+function saveState(){
+  var st={f:{},cb:{},icr:document.getElementById('icr_score').value};
+  document.querySelectorAll('#bilan-form input').forEach(function(el){
+    if(el.type==='hidden')return;
+    if(el.type==='radio'){if(el.checked)st.f[el.name]=el.value;}
+    else if(el.type==='checkbox'){
+      if(el.name==='objectif'){if(el.checked){(st.cb.objectif=st.cb.objectif||[]).push(el.value);}}
+      else{st.f[el.id]=el.checked;}
+    }
+    else if(el.id){st.f[el.id]=el.value;}
+  });
+  try{localStorage.setItem(STORE_KEY,JSON.stringify(st));}catch(e){}
+}
+function restoreState(){
+  var raw=null;try{raw=localStorage.getItem(STORE_KEY);}catch(e){}
+  if(!raw)return;
+  var st;try{st=JSON.parse(raw);}catch(e){return;}
+  document.querySelectorAll('#bilan-form input').forEach(function(el){
+    if(el.type==='hidden')return;
+    if(el.type==='radio'){el.checked=(st.f[el.name]===el.value);}
+    else if(el.type==='checkbox'){
+      if(el.name==='objectif'){el.checked=!!(st.cb.objectif&&st.cb.objectif.indexOf(el.value)>-1);}
+      else{el.checked=!!st.f[el.id];}
+    }
+    else if(el.id&&st.f[el.id]!==undefined){el.value=st.f[el.id];}
+  });
+  if(st.icr!==''&&st.icr!==undefined){
+    var s2=parseFloat(st.icr);
+    if(!isNaN(s2)){
+      document.getElementById('icr_score').value=s2;lastICR=s2;
+      document.getElementById('icr_display').textContent=s2.toFixed(1);
+      showICR(s2);
+    }
+  }
+  document.getElementById('secu_assis').dispatchEvent(new Event('change'));
+}
+function doReset(){
+  if(!window.confirm(t('confirm_restart')))return;
+  try{localStorage.removeItem(STORE_KEY);}catch(e){}
+  window.location.reload();
+}
+['reset-btn','reset-btn-top'].forEach(function(id){document.getElementById(id).addEventListener('click',doReset);});
+document.getElementById('bilan-form').addEventListener('change',function(){saveState();updateProgress();});
+document.getElementById('bilan-form').addEventListener('input',function(){saveState();updateProgress();});
+
+applyLang();
+restoreState();
+updateProgress();
 </script>
 </body>
 </html>
