@@ -299,6 +299,22 @@ body{padding-top:52px;}
     <thead><tr id="nij_head"></tr></thead>
     <tbody id="nij_body"></tbody>
   </table>
+  <div class="sub-q" style="margin-top:22px;">
+    <span class="q-label" data-i="ctx_bouche_q"></span>
+    <div class="radio-group">
+      <label><input type="radio" name="contexte_bouche_nuit" value="jamais"><span data-i="freq_0"></span></label>
+      <label><input type="radio" name="contexte_bouche_nuit" value="parfois"><span data-i="freq_1"></span></label>
+      <label><input type="radio" name="contexte_bouche_nuit" value="souvent"><span data-i="freq_2"></span></label>
+    </div>
+  </div>
+  <div class="sub-q">
+    <span class="q-label" data-i="ctx_fatigue_q"></span>
+    <div class="radio-group">
+      <label><input type="radio" name="contexte_fatigue_reveil" value="jamais"><span data-i="freq_0"></span></label>
+      <label><input type="radio" name="contexte_fatigue_reveil" value="parfois"><span data-i="freq_1"></span></label>
+      <label><input type="radio" name="contexte_fatigue_reveil" value="souvent"><span data-i="freq_2"></span></label>
+    </div>
+  </div>
 </div>
 
 <!-- 5. MOUVEMENT -->
@@ -352,11 +368,17 @@ body{padding-top:52px;}
   </div>
   <div class="sub-q">
     <span class="q-label"><span data-i="portrait_q"></span> <span class="req">*</span></span>
+    <div class="hint" id="portrait-hint" style="margin:-2px 0 8px;" data-i="portrait_hint"></div>
     <div class="radio-group stack">
-      <label><input type="radio" name="portrait" value="plein_regime"><span data-i="portrait_1"></span></label>
-      <label><input type="radio" name="portrait" value="tendu"><span data-i="portrait_2"></span></label>
-      <label><input type="radio" name="portrait" value="pilote_auto"><span data-i="portrait_3"></span></label>
-      <label><input type="radio" name="portrait" value="melange"><span data-i="portrait_4"></span></label>
+      <label><input type="checkbox" name="portrait" value="plein_regime" class="portrait-cb"><span data-i="portrait_1"></span></label>
+      <label><input type="checkbox" name="portrait" value="tendu" class="portrait-cb"><span data-i="portrait_2"></span></label>
+      <label><input type="checkbox" name="portrait" value="pilote_auto" class="portrait-cb"><span data-i="portrait_3"></span></label>
+      <label><input type="checkbox" name="portrait" value="melange" class="portrait-cb"><span data-i="portrait_4"></span></label>
+      <label><input type="checkbox" name="portrait" value="bien" class="portrait-cb"><span data-i="portrait_5"></span></label>
+      <label><input type="checkbox" name="portrait" value="autre" class="portrait-cb"><span data-i="portrait_6"></span></label>
+      <div class="field" id="portrait_autre_wrap" style="display:none;margin:2px 0 0;">
+        <input type="text" id="portrait_autre" name="portrait_autre" maxlength="200" autocomplete="off" data-ip="ph_autre">
+      </div>
     </div>
   </div>
   <div class="sub-q">
@@ -485,10 +507,19 @@ fr: {
   s6_title:"Conscience", s6_sub:"Échelle de stress perçu (PSS-4)",
   s7_title:"Votre profil",
   portrait_q:"Quelle phrase vous ressemble le plus en ce moment?",
+  portrait_hint:"Choisissez jusqu'à 3 réponses.", portrait_max:"Maximum 3 réponses.",
   portrait_1:"Je tourne à plein régime toute la journée, et même le soir, j'ai du mal à décrocher.",
   portrait_2:"Mon corps est tendu, raide, et je le sens surtout le soir.",
   portrait_3:"Je fonctionne, mais j'ai l'impression d'être en pilote automatique, loin de moi-même.",
+  ctx_bouche_q:"Vous réveillez-vous la bouche sèche, ou respirez-vous par la bouche la nuit ?",
+  ctx_fatigue_q:"Vous réveillez-vous fatigué(e), même après une nuit complète ?",
+  freq_0:"Jamais", freq_1:"Parfois", freq_2:"Souvent",
+  ctx_note:"Vous avez indiqué {X} : la respiration nasale de jour est souvent un bon point de départ pour mieux récupérer la nuit.",
+  ctx_x_bouche:"une respiration par la bouche la nuit", ctx_x_fatigue:"des réveils fatigués", ctx_and:" et ",
   portrait_4:"Un peu de tout ça, selon les jours.",
+  portrait_5:"Je me sens plutôt bien. Je veux surtout prévenir ou aller plus loin.",
+  portrait_6:"Autre, je dirais plutôt :",
+  ph_autre:"Facultatif, 200 caractères maximum",
   obj_q:"Dans 3 mois, comment aimeriez-vous vous sentir? (plusieurs choix possibles)",
   obj_1:"Mieux dormir et vraiment récupérer", obj_2:"Plus calme au quotidien", obj_3:"Plus d'énergie",
   obj_4:"Plus détendu(e) dans mon corps", obj_5:"Plus présent(e), moins dans ma tête", obj_6:"Plus performant(e) à l'effort",
@@ -509,6 +540,7 @@ fr: {
   expl_mouv:"Le mouvement donne à la respiration l'espace pour se déployer: un thorax mobile et un corps actif soutiennent un souffle plus fluide. Bouger régulièrement et réduire les longues périodes assises est un bon premier levier.",
   expl_cons:"La conscience relie le souffle à votre état intérieur: percevoir votre respiration aide à ralentir et à mieux récupérer. Quelques minutes d'attention régulière peuvent déjà changer votre façon de traverser les journées chargées.",
   cross_none:"Vous décrivez un peu de tout, selon les jours. Vos réponses suggèrent de commencer par le pilier {X}.",
+  cross_bien:"Vous vous sentez plutôt bien. Vos réponses suggèrent que le pilier {X} est celui où vous pouvez progresser le plus.",
   cross_confirm:"Vos réponses confirment ce que vous décrivez: le pilier {P} est un bon point de départ.",
   cross_diff:"Vous vous sentez {feel}, mais vos réponses montrent que le pilier {X} est celui qui a le plus de place pour progresser.",
   feel_plein_regime:"à plein régime", feel_tendu:"tendu(e) dans votre corps", feel_pilote_auto:"en pilote automatique",
@@ -570,10 +602,19 @@ en: {
   s6_title:"Awareness", s6_sub:"Perceived Stress Scale (PSS-4)",
   s7_title:"Your profile",
   portrait_q:"Which sentence sounds most like you right now?",
+  portrait_hint:"Choose up to 3 answers.", portrait_max:"Maximum 3 answers.",
   portrait_1:"I run at full speed all day, and even in the evening I have trouble switching off.",
   portrait_2:"My body feels tense and stiff, and I notice it mostly in the evening.",
   portrait_3:"I function, but I feel like I'm on autopilot, far from myself.",
+  ctx_bouche_q:"Do you wake up with a dry mouth, or do you breathe through your mouth at night?",
+  ctx_fatigue_q:"Do you wake up tired, even after a full night's sleep?",
+  freq_0:"Never", freq_1:"Sometimes", freq_2:"Often",
+  ctx_note:"You indicated {X}: daytime nasal breathing is often a good starting point to recover better at night.",
+  ctx_x_bouche:"mouth breathing at night", ctx_x_fatigue:"waking up tired", ctx_and:" and ",
   portrait_4:"A bit of all of that, depending on the day.",
+  portrait_5:"I feel pretty well. I mainly want to prevent problems or go further.",
+  portrait_6:"Other, I would rather say:",
+  ph_autre:"Optional, 200 characters maximum",
   obj_q:"In 3 months, how would you like to feel? (multiple choices allowed)",
   obj_1:"Sleep better and truly recover", obj_2:"Calmer in daily life", obj_3:"More energy",
   obj_4:"More relaxed in my body", obj_5:"More present, less in my head", obj_6:"Perform better during effort",
@@ -593,6 +634,7 @@ en: {
   expl_mouv:"Movement gives breathing room to unfold: a mobile chest and an active body support a smoother breath. Moving regularly and reducing long periods of sitting is a good first lever.",
   expl_cons:"Awareness connects your breath to your inner state: noticing your breathing helps you slow down and recover better. A few minutes of regular attention can already change how you move through busy days.",
   cross_none:"You describe a bit of everything, depending on the day. Your answers suggest starting with the {X} pillar.",
+  cross_bien:"You feel pretty well. Your answers suggest that the {X} pillar is where you can progress the most.",
   cross_confirm:"Your answers confirm what you describe: the {P} pillar is a good place to start.",
   cross_diff:"You feel {feel}, but your answers show that the {X} pillar is the one with the most room to grow.",
   feel_plein_regime:"at full speed", feel_tendu:"tense in your body", feel_pilote_auto:"on autopilot",
@@ -725,6 +767,7 @@ function normGodin(id){
   if(isNaN(n)){el.value='';return;}
   el.value=Math.min(30,Math.max(0,Math.round(n)));
 }
+function checkedVal(name){var s=document.querySelector('input[name="'+name+'"]:checked');return s?s.value:'';}
 function numVal(id){normGodin(id);var v=document.getElementById(id).value;return v===''?null:parseFloat(v);}
 ['godin_intenses','godin_moderees','godin_legeres'].forEach(function(id){
   var el=document.getElementById(id);
@@ -775,13 +818,17 @@ function compute(){
   var lvMouv=(godin<14)?0:((godin>=24&&sitLow)?2:1);
   var lvCons=(pssTotal>=10)?0:((pssTotal<=5)?2:1);
 
-  var portrait=document.querySelector('input[name="portrait"]:checked').value;
-  var portraitPillar={plein_regime:'resp',tendu:'mouv',pilote_auto:'cons',melange:null}[portrait];
+  var portraitList=[];
+  document.querySelectorAll('input[name="portrait"]:checked').forEach(function(c){portraitList.push(c.value);});
+  var pillarOf={plein_regime:'resp',tendu:'mouv',pilote_auto:'cons'};
+  var portraitPillars=[];
+  portraitList.forEach(function(v){if(pillarOf[v]&&portraitPillars.indexOf(pillarOf[v])<0)portraitPillars.push(pillarOf[v]);});
   var levels={resp:lvResp,mouv:lvMouv,cons:lvCons};
   var order=['resp','mouv','cons'];
   var min=Math.min(lvResp,lvMouv,lvCons);
   var tied=order.filter(function(k){return levels[k]===min;});
-  var priority=(portraitPillar&&tied.indexOf(portraitPillar)>-1)?portraitPillar:tied[0];
+  var priority=tied[0];
+  for(var q=0;q<tied.length;q++){if(portraitPillars.indexOf(tied[q])>-1){priority=tied[q];break;}}
 
   var objectifs=[];
   document.querySelectorAll('input[name="objectif"]:checked').forEach(function(c){objectifs.push(c.value);});
@@ -790,7 +837,9 @@ function compute(){
     prenom:document.getElementById('prenom').value.trim(),
     icr:icr, nijTotal:nijTotal, nij:nij, pssTotal:pssTotal, pss:pss, godin:godin,
     godinInt:numVal('godin_intenses')||0, godinMod:numVal('godin_moderees')||0, godinLeg:numVal('godin_legeres')||0,
-    assis:assis, levels:levels, priority:priority, portrait:portrait, portraitPillar:portraitPillar,
+    assis:assis, levels:levels, priority:priority, portrait:portraitList.join(', '), portraitList:portraitList, portraitPillars:portraitPillars,
+    ctxBouche:checkedVal('contexte_bouche_nuit'), ctxFatigue:checkedVal('contexte_fatigue_reveil'),
+    portraitAutre:(portraitList.indexOf('autre')>-1?document.getElementById('portrait_autre').value.trim().slice(0,200):''),
     objectifs:objectifs, sante:document.querySelector('input[name="condition_sante"]:checked').value
   };
 }
@@ -834,9 +883,12 @@ function renderResults(r){
 
   var X=pillarName(r.priority);
   var cross;
-  if(!r.portraitPillar){cross=t('cross_none').replace('{X}',X);}
-  else if(r.portraitPillar===r.priority){cross=t('cross_confirm').replace('{P}',pillarName(r.portraitPillar));}
-  else{cross=t('cross_diff').replace('{feel}',t('feel_'+r.portrait)).replace('{X}',X);}
+  var feels=[];
+  r.portraitList.forEach(function(v){if(T[LANG]['feel_'+v])feels.push(t('feel_'+v));});
+  if(r.portraitList.indexOf('bien')>-1){cross=t('cross_bien').replace('{X}',X);}
+  else if(!r.portraitPillars.length){cross=t('cross_none').replace('{X}',X);}
+  else if(r.portraitPillars.indexOf(r.priority)>-1){cross=t('cross_confirm').replace('{P}',X);}
+  else{cross=t('cross_diff').replace('{feel}',feels.join(t('ctx_and'))).replace('{X}',X);}
   var allSolid=(r.levels.resp===2&&r.levels.mouv===2&&r.levels.cons===2);
   if(allSolid){
     h+='<div class="res-sec"><h3>'+t('res_priority')+'</h3><div class="priority-card">'+t('all_solid').replace('{X}','<strong>'+X+'</strong>')+'</div></div>';
@@ -849,7 +901,12 @@ function renderResults(r){
 
   h+='<div class="res-sec"><h3>'+t('res_exercise')+'</h3><div class="ex-title">'+t('ex_'+r.priority+'_t')+'</div><ol class="ex-list">';
   T[LANG]['ex_'+r.priority].forEach(function(s){h+='<li>'+s+'</li>';});
-  h+='</ol><p class="hint" style="margin-top:12px;font-size:13px;">'+t('ex_redo')+'</p></div>';
+  var ctxList=[];
+  if(r.ctxBouche==='souvent')ctxList.push(t('ctx_x_bouche'));
+  if(r.ctxFatigue==='souvent')ctxList.push(t('ctx_x_fatigue'));
+  h+='</ol>';
+  if(ctxList.length)h+='<p class="hint" style="margin-top:12px;font-size:14px;color:var(--charcoal);">'+t('ctx_note').replace('{X}',ctxList.join(t('ctx_and')))+'</p>';
+  h+='<p class="hint" style="margin-top:12px;font-size:13px;">'+t('ex_redo')+'</p></div>';
 
   var assisTxt={moins4:'assis_1',"4a6":'assis_2',"6a8":'assis_3',"8plus":'assis_4'}[r.assis];
   h+='<div class="res-sec"><details class="det"><summary>'+t('res_details')+'</summary><table>'
@@ -928,6 +985,10 @@ document.getElementById('bilan-form').addEventListener('submit',function(e){
   data.niveau_conscience=LV_NAMES[r.levels.cons];
   data.pilier_prioritaire=r.priority;
   data.objectifs=r.objectifs.join(', ');
+  data.portrait=r.portrait;
+  data.portrait_autre=r.portraitAutre;
+  data.contexte_bouche_nuit=r.ctxBouche;
+  data.contexte_fatigue_reveil=r.ctxFatigue;
   data.langue=LANG;
   post(data);
 
@@ -962,7 +1023,7 @@ function saveState(){
     if(el.type==='hidden')return;
     if(el.type==='radio'){if(el.checked)st.f[el.name]=el.value;}
     else if(el.type==='checkbox'){
-      if(el.name==='objectif'){if(el.checked){(st.cb.objectif=st.cb.objectif||[]).push(el.value);}}
+      if(el.name==='objectif'||el.name==='portrait'){if(el.checked){(st.cb[el.name]=st.cb[el.name]||[]).push(el.value);}}
       else{st.f[el.id]=el.checked;}
     }
     else if(el.id){st.f[el.id]=el.value;}
@@ -977,7 +1038,7 @@ function restoreState(){
     if(el.type==='hidden')return;
     if(el.type==='radio'){el.checked=(st.f[el.name]===el.value);}
     else if(el.type==='checkbox'){
-      if(el.name==='objectif'){el.checked=!!(st.cb.objectif&&st.cb.objectif.indexOf(el.value)>-1);}
+      if(el.name==='objectif'||el.name==='portrait'){el.checked=!!(st.cb[el.name]&&st.cb[el.name].indexOf(el.value)>-1);}
       else{el.checked=!!st.f[el.id];}
     }
     else if(el.id&&st.f[el.id]!==undefined){el.value=st.f[el.id];}
@@ -998,11 +1059,33 @@ function doReset(){
   window.location.reload();
 }
 ['reset-btn','reset-btn-top'].forEach(function(id){document.getElementById(id).addEventListener('click',doReset);});
-document.getElementById('bilan-form').addEventListener('change',function(){saveState();updateProgress();});
+// Portrait: 3 choix max; "bien" et "un peu de tout" sont exclusifs
+document.querySelectorAll('.portrait-cb').forEach(function(cb){
+  cb.addEventListener('change',function(){
+    var v=cb.value,boxes=document.querySelectorAll('.portrait-cb');
+    if(cb.checked&&(v==='bien'||v==='melange')){
+      boxes.forEach(function(o){if(o!==cb&&o.value!=='autre')o.checked=false;});
+    }else if(cb.checked){
+      boxes.forEach(function(o){if(o.value==='bien'||o.value==='melange')o.checked=false;});
+    }
+    if(document.querySelectorAll('.portrait-cb:checked').length>3){
+      cb.checked=false;
+      var h=document.getElementById('portrait-hint');
+      h.textContent=t('portrait_max');h.style.color='#B3261E';
+      setTimeout(function(){h.textContent=t('portrait_hint');h.style.color='';},2200);
+    }
+  });
+});
+function updatePortraitOther(){
+  var on=!!document.querySelector('input[name="portrait"][value="autre"]:checked');
+  document.getElementById('portrait_autre_wrap').style.display=on?'block':'none';
+}
+document.getElementById('bilan-form').addEventListener('change',function(){updatePortraitOther();saveState();updateProgress();});
 document.getElementById('bilan-form').addEventListener('input',function(){saveState();updateProgress();});
 
 applyLang();
 restoreState();
+updatePortraitOther();
 updateProgress();
 </script>
 </body>
