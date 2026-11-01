@@ -34,14 +34,7 @@ footer{text-align:center;font-size:12px;color:var(--mid);padding:18px;}
 <body>
 <div class="wrap">
 
-<!-- =====================================================================
-     DOCUMENT UNIQUE DE CONFORMITÉ (LOI 25) : BREATHAVIA
-     PARTIE A : Politique de confidentialité, à publier sur le site.
-     PARTIE B : Documents internes, À NE PAS PUBLIER.
-     Pour la mise en ligne, publier seulement la PARTIE A : supprimer tout
-     le bloc <section id="partie-b"> ... </section> de la version déployée.
-     Ce modèle n'est pas un avis juridique : faites-le valider.
-     ===================================================================== -->
+
 
 <!-- ============================ PARTIE A ============================ -->
 <section id="partie-a">
@@ -160,118 +153,7 @@ Adresse : 3030, boulevard Curé-Labelle, bureau 206, Laval (Québec)</p>
 <!-- ========================== FIN PARTIE A ========================== -->
 
 
-<!-- ============================ PARTIE B ============================ -->
-<!-- DOCUMENTS INTERNES : supprimer toute cette section avant de publier. -->
-<section id="partie-b" class="internal">
-<div class="internal-banner">PARTIE B : DOCUMENTS INTERNES. NE PAS PUBLIER SUR LE SITE.</div>
 
-<h2 style="border-top:none;padding-top:0;margin-top:0;">B1. Règles de gouvernance des renseignements personnels</h2>
-<p>Adoptées le 1er novembre 2026. Révision : une fois par année, ou dès qu'un outil ou un usage change.</p>
-
-<h3>Rôles</h3>
-<ul>
-  <li><strong>Responsable de la protection des renseignements personnels</strong> : le fondateur de Breathavia. Il approuve ces règles, traite les demandes et les incidents, et tient les registres.</li>
-  <li><strong>Accès</strong> : seul le responsable a accès à la feuille Google, à la boîte courriel et à MailerLite. Toute nouvelle personne (par exemple un membre de l'équipe) doit recevoir un accès limité à ses tâches, s'engager à la confidentialité, et être ajoutée à cette liste.</li>
-</ul>
-
-<h3>Collecte et utilisation</h3>
-<ul>
-  <li>On ne recueille que les renseignements nécessaires au bilan : coordonnées, réponses, renseignements de santé, consentements.</li>
-  <li>Les renseignements de santé ne servent qu'à calculer et envoyer le bilan. Ils ne sont jamais utilisés pour la publicité ciblée.</li>
-  <li>Seules les personnes ayant coché le consentement marketing sont ajoutées à MailerLite.</li>
-  <li>Les réponses du bilan ne sont pas versées au dossier clinique, sauf avec l'accord de la personne.</li>
-</ul>
-
-<h3>Sécurité</h3>
-<ul>
-  <li>Authentification à deux facteurs sur Google, MailerLite et GitHub.</li>
-  <li>Mots de passe uniques, conservés dans un gestionnaire de mots de passe.</li>
-  <li>La feuille Google n'est jamais partagée par lien public.</li>
-  <li>Aucune copie des données sur un appareil non protégé ou une clé USB.</li>
-</ul>
-
-<h3>Conservation et destruction</h3>
-<ul>
-  <li>Une nouvelle feuille Google par année civile (ex. « Bilans 2026 »).</li>
-  <li>Chaque trimestre : supprimer les lignes de plus de 24 mois.</li>
-  <li>Une feuille dont toutes les lignes ont plus de 24 mois est supprimée au complet, puis la corbeille Google Drive est vidée.</li>
-  <li>Dans Gmail, les courriels de résultats envoyés de plus de 24 mois sont supprimés au même moment.</li>
-  <li>Pour des statistiques à long terme, on garde seulement des données anonymes (sans prénom ni courriel).</li>
-</ul>
-
-<h3>Traitement des demandes</h3>
-<ol>
-  <li>Accuser réception et vérifier que la demande vient bien de la personne (réponse depuis la même adresse courriel).</li>
-  <li><strong>Accès</strong> : lui envoyer ses renseignements (copie de sa ligne de la feuille).</li>
-  <li><strong>Correction</strong> : corriger la ligne.</li>
-  <li><strong>Désabonnement</strong> : automatique par MailerLite, rien d'autre à faire.</li>
-  <li><strong>Suppression</strong> : supprimer sa ligne dans la feuille Google, ses courriels dans Gmail (envoyés et reçus, puis vider la corbeille), et la supprimer de MailerLite (« Supprimer », pas seulement « Désabonner »).</li>
-  <li>Confirmer à la personne dans un délai de 30 jours.</li>
-  <li>Inscrire la demande au registre B4.</li>
-</ol>
-
-<h3>Fournisseurs</h3>
-<ul>
-  <li>Tout nouveau fournisseur qui reçoit des renseignements personnels doit faire l'objet d'une évaluation (section B2) avant d'être utilisé.</li>
-  <li>Toute nouvelle utilisation des renseignements doit être ajoutée à la politique publique avant d'être mise en place.</li>
-</ul>
-
-<h2>B2. Évaluation des facteurs relatifs à la vie privée : communication hors du Québec</h2>
-<p>Date : 1er novembre 2026. À revoir chaque année.</p>
-<p><strong>Projet évalué</strong> : bilan respiratoire en ligne Breathavia et communications par courriel.</p>
-<p><strong>Sensibilité des renseignements</strong> : élevée pour les renseignements de santé (symptômes, condition respiratoire ou cardiaque, grossesse). Modérée pour les coordonnées.</p>
-
-<table>
-  <tr><th>Fournisseur</th><th>Renseignements</th><th>Finalité</th><th>Lieu</th><th>Mesures de protection</th><th>Évaluation</th></tr>
-  <tr><td>Google (Sheets, Apps Script, Gmail)</td><td>Tous les renseignements du bilan, dont la santé</td><td>Réception, conservation, envoi des résultats</td><td>Canada, États-Unis ou ailleurs</td><td>Chiffrement en transit et au repos, certifications de sécurité reconnues (dont ISO 27001), conditions de traitement des données, accès limité au responsable, double authentification</td><td>Protection adéquate</td></tr>
-  <tr><td>MailerLite</td><td>Prénom, courriel, consentement marketing (aucune donnée de santé)</td><td>Infolettres</td><td>Union européenne ou États-Unis</td><td>Encadré par le RGPD européen, conditions de traitement des données, désabonnement en un clic, double authentification</td><td>Protection adéquate</td></tr>
-  <tr><td>GitHub Pages</td><td>Aucune donnée du formulaire (hébergement de la page seulement), journaux techniques</td><td>Hébergement</td><td>États-Unis</td><td>Les réponses ne transitent pas par GitHub, double authentification sur le compte</td><td>Risque faible</td></tr>
-  <tr><td>Google Fonts</td><td>Adresse IP</td><td>Affichage des polices</td><td>États-Unis</td><td>Aucune donnée du formulaire</td><td>Risque faible</td></tr>
-</table>
-
-<p><strong>Mesures de réduction du risque</strong> :</p>
-<ul>
-  <li>Aucune donnée de santé n'est envoyée à MailerLite : seulement le prénom, le courriel et le consentement.</li>
-  <li>Conservation limitée à 24 mois, puis destruction.</li>
-  <li>Un seul accès, protégé par double authentification.</li>
-  <li>Amélioration possible : héberger les polices directement avec la page pour éliminer le transfert d'adresse IP à Google Fonts.</li>
-</ul>
-<p><strong>Conclusion</strong> : compte tenu de la sensibilité des renseignements, des mesures de protection des fournisseurs et des mesures internes, les renseignements bénéficient d'une protection adéquate hors du Québec. Les personnes en sont informées dans la politique publique.</p>
-
-<h2>B3. Registre des incidents de confidentialité</h2>
-<p><strong>Qu'est-ce qu'un incident</strong> : un accès, une utilisation, une communication ou une perte de renseignements personnels non autorisés. Exemples : courriel de résultats envoyé à la mauvaise personne, feuille partagée par erreur, compte piraté, appareil perdu.</p>
-<p><strong>Que faire</strong> :</p>
-<ol>
-  <li>Limiter immédiatement les dégâts : retirer l'accès, changer les mots de passe, demander la suppression du courriel envoyé par erreur.</li>
-  <li>Évaluer le risque de préjudice sérieux : sensibilité des renseignements (la santé est sensible), nombre de personnes, risque d'utilisation malveillante.</li>
-  <li>Si le risque est sérieux : aviser la Commission d'accès à l'information (formulaire sur cai.gouv.qc.ca) et les personnes concernées, rapidement.</li>
-  <li>Inscrire chaque incident au registre, même s'il ne présente pas de risque sérieux.</li>
-</ol>
-<p>Le registre est conservé au moins 5 ans après la date de l'incident.</p>
-<table>
-  <tr><th>Date de l'incident</th><th>Date de découverte</th><th>Description</th><th>Renseignements touchés</th><th>Nombre de personnes</th><th>Risque sérieux (oui/non) et pourquoi</th><th>Mesures prises</th><th>CAI et personnes avisées (dates)</th></tr>
-  <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-  <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-</table>
-
-<h2>B4. Registre des demandes</h2>
-<p>Ne pas inscrire les réponses au bilan ni les renseignements de santé : seulement ce qu'il faut pour prouver que la demande a été traitée.</p>
-<table>
-  <tr><th>Date de réception</th><th>Type (accès, correction, retrait, suppression)</th><th>Identité vérifiée (oui/non)</th><th>Actions faites</th><th>Date de la réponse</th></tr>
-  <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
-  <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
-</table>
-
-<h2>B5. Calendrier</h2>
-<table>
-  <tr><th>Fréquence</th><th>Tâche</th></tr>
-  <tr><td>À chaque demande</td><td>Traiter dans les 30 jours et inscrire au registre B4</td></tr>
-  <tr><td>Chaque trimestre</td><td>Supprimer les données de plus de 24 mois (feuille Google et Gmail)</td></tr>
-  <tr><td>Chaque année</td><td>Créer la nouvelle feuille annuelle, revoir les règles B1 et l'évaluation B2, vérifier la double authentification</td></tr>
-  <tr><td>À chaque changement d'outil ou d'usage</td><td>Nouvelle évaluation B2 et mise à jour de la politique publique</td></tr>
-</table>
-</section>
-<!-- ========================== FIN PARTIE B ========================== -->
 
 </div>
 </body>
