@@ -283,10 +283,6 @@ body{padding-top:52px;}
     <span class="txt" data-i="consent_b"></span>
   </label>
   <div class="hint" data-i="policy_line" style="margin-bottom:14px;"></div>
-  <div class="contact-actions">
-    <button type="button" class="btn-secondary" id="continue-btn" data-i="btn_continue"></button>
-    <div class="contact-err" id="contact-error"></div>
-  </div>
 </div>
 
 <!-- 4. RESPIRATION -->
@@ -479,8 +475,6 @@ fr: {
   consent_a:"Je comprends que ce bilan est indicatif et non un diagnostic médical. J'accepte que Breathavia recueille mes réponses, y compris des renseignements de santé, pour calculer mon bilan et me l'envoyer par courriel.",
   consent_b:"Je souhaite aussi recevoir des conseils et des nouvelles de Breathavia (facultatif). Vous pouvez vous désabonner en un clic, à tout moment.",
   policy_line:"Vos renseignements sont traités conformément à notre <a class=\"pol\" href=\"#\" target=\"_blank\" rel=\"noopener\">politique de confidentialité</a>.",
-  btn_continue:"Continuer",
-  contact_err:"Veuillez cocher la case de consentement obligatoire (*), indiquer votre prénom et un courriel valide.",
   btn_restart:"Recommencer", confirm_restart:"Effacer vos réponses et recommencer le bilan?",
   s4_title:"Respiration", s4_sub:"Questionnaire de Nijmegen",
   s5_title:"Mouvement", s5_sub:"Godin-Shephard et temps assis",
@@ -566,8 +560,6 @@ en: {
   consent_a:"I understand that this assessment is indicative and not a medical diagnosis. I agree that Breathavia collects my answers, including health information, to calculate my assessment and send it to me by email.",
   consent_b:"I would also like to receive tips and news from Breathavia (optional). You can unsubscribe in one click, at any time.",
   policy_line:"Your information is handled in accordance with our <a class=\"pol\" href=\"#\" target=\"_blank\" rel=\"noopener\">privacy policy</a>.",
-  btn_continue:"Continue",
-  contact_err:"Please tick the required consent box (*), enter your first name and a valid email address.",
   btn_restart:"Start over", confirm_restart:"Erase your answers and start the assessment over?",
   s4_title:"Breathing", s4_sub:"Nijmegen Questionnaire",
   s5_title:"Movement", s5_sub:"Godin-Shephard and sitting time",
@@ -875,7 +867,7 @@ function renderResults(r){
 }
 
 // ---------- Envoi ----------
-var SCRIPT_URL='https://script.google.com/macros/s/AKfycbwX0qjB77df_n07T7Sma6Ww9Ef4VChcM_v7Jo_DM6znP7b7aKNsI-IAZJJ3A7jcIyQ/exec';
+var SCRIPT_URL='https://script.google.com/macros/s/AKfycbzSuUD--lsi0jmKS-ePH-tf41DzxImu_nlpcLppxdNlw2X5vzRuZGMSXONfTUabfG4/exec';
 var LV_NAMES=['a_developper','intermediaire','solide'];
 var STORE_KEY='breathavia_bilan_state_v2';
 
@@ -900,31 +892,6 @@ function contactData(){
     date_soumission:localDate()
   };
 }
-function contactValid(){
-  var fails=[];
-  if(!document.getElementById('secu_assis').checked)fails.push('secu_assis');
-  if(document.getElementById('icr_score').value==='')fails.push('icr_display');
-  if(!document.getElementById('prenom').value.trim())fails.push('prenom');
-  var em=document.getElementById('email').value.trim();
-  if(!em||em.indexOf('@')<1||em.indexOf('.',em.indexOf('@'))<0)fails.push('email');
-  if(!document.getElementById('consent_resultats').checked)fails.push('consent_resultats');
-  return fails;
-}
-document.getElementById('continue-btn').addEventListener('click',function(){
-  var err=document.getElementById('contact-error');
-  var fails=contactValid();
-  if(fails.length){
-    err.textContent=(fails[0]==='icr_display'||fails[0]==='secu_assis')?t('icr_required'):t('contact_err');
-    var target=document.getElementById(fails[0]);
-    if(target)target.scrollIntoView({behavior:'smooth',block:'center'});
-    return;
-  }
-  err.textContent='';
-  saveState();
-  var next=document.querySelector('#bilan-form .section:nth-of-type(4)');
-  if(next)next.scrollIntoView({behavior:'smooth',block:'start'});
-});
-
 document.getElementById('bilan-form').addEventListener('submit',function(e){
   e.preventDefault();
   var err=document.getElementById('form-error');
