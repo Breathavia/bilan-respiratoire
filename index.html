@@ -123,6 +123,13 @@ details.det table{width:100%;border-collapse:collapse;margin-top:10px;font-size:
 details.det td{padding:7px 4px;border-bottom:1px solid #ede8df;vertical-align:top;}
 details.det td:last-child{text-align:right;font-weight:500;white-space:nowrap;padding-left:10px;}
 .limits{font-size:12.5px;color:var(--mid);line-height:1.7;}
+.next-sec{background:var(--cream);}
+.next-p{font-size:15px;color:var(--charcoal);line-height:1.6;margin-bottom:14px;}
+.next-btn{display:block;text-align:center;background:var(--gold);color:var(--charcoal);text-decoration:none;border-radius:6px;padding:14px 18px;font-size:16px;font-weight:500;}
+.next-btn span{display:block;font-size:12px;font-weight:400;margin-top:2px;}
+.next-btn2{display:block;width:100%;background:transparent;color:var(--charcoal);border:1px solid var(--charcoal);border-radius:6px;padding:12px 18px;font-size:15px;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:10px;}
+.dm-box{background:#fff;border:1px dashed var(--gold);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--charcoal);-webkit-user-select:all;user-select:all;}
+.dm-ok{font-size:13px;margin-top:8px;min-height:18px;}
 
 body{padding-top:52px;}
 #progress-bar{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--charcoal);padding:2px 12px;min-height:48px;display:flex;gap:10px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.25);}
@@ -565,9 +572,18 @@ fr: {
   warn_sante:"Vous avez indiqué une condition respiratoire, une condition cardiaque ou une grossesse. Parlez-en à votre professionnel de santé avant d'essayer l'exercice proposé, et ne forcez jamais.",
   res_limits_h:"Limites de ce bilan",
   res_limits:"Ce bilan s'appuie sur des questionnaires scientifiques reconnus, mais ce n'est pas un diagnostic et il ne remplace pas une évaluation médicale. Votre ICR peut varier selon l'heure, le stress ou le sommeil. Ne modifiez jamais une médication en fonction de ce résultat. Les niveaux par pilier sont des repères indicatifs établis par Breathavia.",
-  res_next:"Pour aller plus loin, vous pouvez écrire à hello@breathavia.com ou visiter breathavia.com.",
+  res_next:"Vous pouvez aussi m'écrire à hello@breathavia.com.",
+  next_h:"Et maintenant?",
+  next_txt:"Votre bilan express donne une première direction. Pour comprendre ce qui limite votre respiration et repartir avec un plan fait pour vous, l'étape suivante est l'évaluation respiratoire.",
+  next_txt_care:"Avec ce résultat, je vous recommande de commencer accompagné(e) : l'évaluation permet d'ajuster le travail à votre situation, en toute sécurité.",
+  btn_book:"Réserver mon évaluation respiratoire", book_sub:"À Laval ou sur Zoom",
+  dm_intro:"Une question avant de réserver? Écrivez-moi sur Instagram, avec votre résultat :",
+  btn_dm:"Copier mon message et ouvrir Instagram",
+  dm_msg:"Bonjour Adnan! Je viens de faire le bilan express. Mon ICR : {S} secondes. Mon pilier prioritaire : {P}.",
+  dm_copied:"✓ Message copié. Dans Instagram, appuyez longuement dans la zone de texte, puis sur « Coller ».",
+  dm_manual:"Copie impossible sur cet appareil : appuyez longuement sur le message ci-dessus pour le copier.",
   res_author:"Bilan conçu par Adnan Mehanovic, ostéopathe et kinésiologue, instructeur certifié Buteyko Clinic International et Oxygen Advantage.",
-  ex_redo:"Refaites votre ICR dans 7 jours, au réveil, dans les mêmes conditions.",
+  ex_redo:"Refaites votre ICR dans 7 jours, puis dans 14 jours, au réveil et dans les mêmes conditions, pour suivre vos progrès.",
   all_solid:"Vos trois piliers sont solides. Vous pouvez aller plus loin en affinant le pilier {X}.",
   ex_resp_t:"Respiration douce (3 minutes)",
   ex_resp:["Asseyez-vous confortablement, une main sur le ventre.","Respirez doucement par le nez, en laissant l'air entrer sans effort.","Allongez légèrement l'expiration, comme si vous souffliez doucement sans faire vaciller une bougie.","Poursuivez 3 minutes à un rythme confortable. En cas d'inconfort, revenez à votre respiration normale."],
@@ -662,9 +678,18 @@ en: {
   warn_sante:"You indicated a respiratory condition, a heart condition or a pregnancy. Please talk to your health professional before trying the suggested exercise, and never force it.",
   res_limits_h:"Limits of this assessment",
   res_limits:"This assessment relies on recognized scientific questionnaires, but it is not a diagnosis and it does not replace a medical evaluation. Your BCI can vary with the time of day, stress or sleep. Never change a medication based on this result. The pillar levels are indicative benchmarks established by Breathavia.",
-  res_next:"To go further, you can write to hello@breathavia.com or visit breathavia.com.",
+  res_next:"You can also write to me at hello@breathavia.com.",
+  next_h:"What now?",
+  next_txt:"Your quick check-up gives you a first direction. To understand what limits your breathing and leave with a plan made for you, the next step is a breathing evaluation.",
+  next_txt_care:"With this result, I recommend starting with guidance: the evaluation lets us adapt the work to your situation, safely.",
+  btn_book:"Book my breathing evaluation", book_sub:"In Laval or on Zoom",
+  dm_intro:"A question before booking? Message me on Instagram with your result:",
+  btn_dm:"Copy my message and open Instagram",
+  dm_msg:"Hi Adnan! I just did the quick check-up. My BCI: {S} seconds. My priority pillar: {P}.",
+  dm_copied:"✓ Message copied. In Instagram, press and hold in the text box, then tap \"Paste\".",
+  dm_manual:"Copy not available on this device: press and hold the message above to copy it.",
   res_author:"Check-up designed by Adnan Mehanovic, osteopath and kinesiologist, certified Buteyko Clinic International and Oxygen Advantage instructor.",
-  ex_redo:"Redo your BCI in 7 days, upon waking, under the same conditions.",
+  ex_redo:"Retake your BCI in 7 days, then in 14 days, upon waking and under the same conditions, to track your progress.",
   all_solid:"Your three pillars are solid. You can go further by refining the {X} pillar.",
   ex_resp_t:"Gentle breathing (3 minutes)",
   ex_resp:["Sit comfortably, one hand on your belly.","Breathe gently through your nose, letting the air come in without effort.","Lengthen the exhale slightly, as if gently blowing without making a candle flicker.","Continue for 3 minutes at a comfortable pace. If you feel discomfort, return to normal breathing."],
@@ -890,6 +915,17 @@ function validate(){
 var lastResult=null;
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function pillarName(k){return t({resp:'p_resp',mouv:'p_mouv',cons:'p_cons'}[k]);}
+function copyText(txt){
+  try{
+    var ta=document.createElement('textarea');ta.value=txt;
+    ta.style.position='fixed';ta.style.top='0';ta.style.opacity='0';ta.style.fontSize='16px';
+    document.body.appendChild(ta);ta.focus();ta.select();ta.setSelectionRange(0,txt.length);
+    var ok=document.execCommand('copy');document.body.removeChild(ta);
+    if(ok)return true;
+  }catch(e){}
+  try{if(navigator.clipboard){navigator.clipboard.writeText(txt);return true;}}catch(e){}
+  return false;
+}
 function renderResults(r){
   var h='';
   h+='<div class="res-hero"><h2>'+t('res_title')+'</h2><p>'+t('res_hello')+(r.prenom?' '+esc(r.prenom):'')+'. '+t('res_copy')+'</p></div>';
@@ -938,10 +974,26 @@ function renderResults(r){
     +'<tr><td>'+t('d_pss')+'</td><td>'+r.pssTotal+' / 16</td></tr>'
     +'</table></details></div>';
 
+  var careFirst=(z===0||r.sante==='oui');
+  var dmTxt=t('dm_msg').replace('{S}',r.icr.toFixed(1)).replace('{P}',pillarName(r.priority));
+  h+='<div class="res-sec next-sec"><h3>'+t('next_h')+'</h3>'
+    +'<p class="next-p">'+t(careFirst?'next_txt_care':'next_txt')+'</p>'
+    +'<a class="next-btn" href="https://book.squareup.com/appointments/izgxzuoxwtm4wt/location/CCV9KBAB97VTD/services/MDWGYY72LTQ6GLP47F6IYKN7" target="_blank" rel="noopener">'+t('btn_book')+'<span>'+t('book_sub')+'</span></a>'
+    +'<p class="next-p" style="margin-top:22px;">'+t('dm_intro')+'</p>'
+    +'<div class="dm-box" id="dm-box">'+esc(dmTxt)+'</div>'
+    +'<button type="button" class="next-btn2" id="dm-btn">'+t('btn_dm')+'</button>'
+    +'<div class="dm-ok" id="dm-ok"></div></div>';
   h+='<div class="res-sec"><div class="limits"><strong>'+t('res_limits_h')+'</strong><br>'+t('res_limits')+'<br><br>'+t('res_next')+'<br><br><em>'+t('res_author')+'</em></div></div>';
   h+='<div class="res-sec" style="text-align:center;"><button type="button" class="btn-secondary" id="reset-btn-res">'+t('btn_restart')+'</button></div>';
   document.getElementById('results').innerHTML=h;
   var rb=document.getElementById('reset-btn-res');if(rb)rb.addEventListener('click',doReset);
+  var db=document.getElementById('dm-btn');
+  if(db)db.addEventListener('click',function(){
+    var ok=copyText(dmTxt),msg=document.getElementById('dm-ok');
+    msg.textContent=t(ok?'dm_copied':'dm_manual');
+    msg.style.color=ok?'#2F6B3A':'#B3261E';
+    window.open('https://ig.me/m/breathavia','_blank');
+  });
 }
 
 // ---------- Envoi ----------
