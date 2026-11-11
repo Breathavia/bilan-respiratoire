@@ -65,6 +65,9 @@ header .tagline{font-size:12px;color:var(--dusty-blue);letter-spacing:.12em;text
 .cp-timer-btns button:disabled{opacity:.4;cursor:default;}
 .cp-timer-note{font-size:12px;color:var(--mid);margin-top:10px;}
 .cp-result{margin-top:10px;font-size:14px;font-weight:500;color:var(--charcoal);min-height:22px;}
+.cp-prefill{background:#fff;border:1px solid var(--dusty-blue);border-radius:8px;padding:12px 16px;margin:12px 0;}
+.cp-prefill .cp-result{margin:0 0 10px;}
+.cp-prefill button{padding:8px 16px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--charcoal);font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;}
 .cp-scale{margin-top:12px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
 .cp-zone{border-radius:5px;padding:7px 8px;text-align:center;font-size:11px;line-height:1.4;opacity:.75;border:2px solid transparent;}
 .cp-zone.active{opacity:1;border-color:currentColor;}
@@ -215,7 +218,7 @@ body{padding-top:52px;}
 <input type="hidden" name="icr_score" id="icr_score" value="">
 
 <!-- 1. SÉCURITÉ -->
-<div class="section">
+<div class="section" id="sec_secu">
   <div class="section-header">
     <div class="section-num">1</div>
     <div><div class="section-title" data-i="s1_title"></div></div>
@@ -236,8 +239,12 @@ body{padding-top:52px;}
   </div>
   <div class="cp-box">
     <p data-i="icr_desc"></p>
-    <div class="cp-protocol" data-i="icr_protocol"></div>
-    <div class="cp-timer">
+    <div class="cp-prefill" id="icr_prefill" style="display:none;">
+      <div class="cp-result" id="icr_prefill_txt"></div>
+      <button type="button" class="sec" id="icr_redo" data-i="icr_redo"></button>
+    </div>
+    <div class="cp-protocol" id="icr_protocol_box" data-i="icr_protocol"></div>
+    <div class="cp-timer" id="icr_timer_box">
       <div class="cp-timer-display" id="icr_display">0.0</div>
       <div class="cp-timer-btns">
         <button type="button" id="icr_start" data-i="btn_start" disabled></button>
@@ -487,6 +494,9 @@ fr: {
   icr_short:"La mesure semble très courte. Voulez-vous recommencer ?",
   icr_long:"Avez-vous oublié d'arrêter le chronomètre ? Vous pouvez recommencer la mesure.",
   icr_required:"Veuillez effectuer la mesure de l'ICR avec le chronomètre.",
+  icr_prefilled:"Résultat reçu de votre test : ",
+  icr_prefilled_note:"Vous venez de faire le test : pas besoin de le refaire.",
+  icr_redo:"Refaire la mesure",
   z0_range:"moins de 10 s", z0_label:"Zone de faible confort",
   z1_range:"10 à 20 s", z1_label:"Zone de confort à développer",
   z2_range:"20 à 40 s", z2_label:"Zone de confort intermédiaire",
@@ -582,6 +592,9 @@ en: {
   icr_short:"The measurement seems very short. Would you like to start over?",
   icr_long:"Did you forget to stop the timer? You can restart the measurement.",
   icr_required:"Please complete the Breathing Comfort Index measurement with the timer.",
+  icr_prefilled:"Result received from your test: ",
+  icr_prefilled_note:"You just took the test: no need to do it again.",
+  icr_redo:"Measure again",
   z0_range:"under 10 s", z0_label:"Low comfort zone",
   z1_range:"10 to 20 s", z1_label:"Comfort zone to develop",
   z2_range:"20 to 40 s", z2_label:"Intermediate comfort zone",
@@ -665,6 +678,13 @@ en: {
 
 var LANG='fr';
 try{var sv=localStorage.getItem('breathavia_bilan_lang');if(sv==='en'||sv==='fr')LANG=sv;}catch(e){}
+// Résultat et langue transmis par la page du test de confort respiratoire (?icr=18&lang=fr)
+var URLP=null;try{URLP=new URLSearchParams(window.location.search);}catch(e){}
+var ICR_FROM_TEST=false;
+(function(){
+  if(!URLP)return;
+  var l=URLP.get('lang');if(l==='en'||l==='fr')LANG=l;
+})();
 function t(k){return (T[LANG][k]!==undefined)?T[LANG][k]:k;}
 
 // ---------- Construction des tableaux d'items ----------
@@ -710,6 +730,7 @@ function applyLang(){
   setPh(document.getElementById('godin_lig_ph'),TOOLS.godin.legeres[LANG]);
   document.querySelectorAll('a.pol').forEach(function(a){a.href=LIEN_POLITIQUE;});
   if(lastICR!==null)showICR(lastICR);
+  if(ICR_FROM_TEST)showPrefill();
   if(lastResult)renderResults(lastResult);
 }
 document.getElementById('lang-btn').addEventListener('click',function(){
@@ -847,7 +868,7 @@ function compute(){
 // ---------- Validation ----------
 function validate(){
   var fails=[];
-  if(!document.getElementById('secu_assis').checked)fails.push('secu_assis');
+  if(!ICR_FROM_TEST&&!document.getElementById('secu_assis').checked)fails.push('secu_assis');
   if(document.getElementById('icr_score').value==='')fails.push('icr_display');
   if(!document.getElementById('prenom').value.trim())fails.push('prenom');
   var em=document.getElementById('email').value.trim();
@@ -1083,8 +1104,41 @@ function updatePortraitOther(){
 document.getElementById('bilan-form').addEventListener('change',function(){updatePortraitOther();saveState();updateProgress();});
 document.getElementById('bilan-form').addEventListener('input',function(){saveState();updateProgress();});
 
+// ---------- Résultat reçu de la page du test ----------
+function showPrefill(){
+  if(lastICR===null)return;
+  var z=zoneIndex(lastICR);
+  document.getElementById('icr_prefill_txt').innerHTML=esc(t('icr_prefilled')+lastICR.toFixed(1)+' s · '+t('z'+z+'_label'))+' &#10003;<br><span style="font-weight:400;font-size:13px;">'+esc(t('icr_prefilled_note'))+'</span>';
+}
+function setPrefillMode(on){
+  ICR_FROM_TEST=on;
+  document.getElementById('icr_prefill').style.display=on?'block':'none';
+  document.getElementById('icr_protocol_box').style.display=on?'none':'';
+  document.getElementById('icr_timer_box').style.display=on?'none':'';
+  document.getElementById('sec_secu').style.display=on?'none':'';
+}
+function applyIncomingICR(){
+  if(!URLP)return;
+  var raw=URLP.get('icr');if(raw===null)return;
+  var s=parseFloat(String(raw).replace(',','.'));
+  if(isNaN(s)||s<=0||s>180)return;
+  s=Math.round(s*10)/10;
+  document.getElementById('icr_score').value=s;lastICR=s;
+  document.getElementById('icr_display').textContent=s.toFixed(1);
+  showICR(s);
+  setPrefillMode(true);
+  showPrefill();
+  saveState();
+}
+document.getElementById('icr_redo').addEventListener('click',function(){
+  setPrefillMode(false);
+  document.getElementById('icr_reset').click();
+  document.getElementById('sec_secu').scrollIntoView({behavior:'smooth',block:'start'});
+});
+
 applyLang();
 restoreState();
+applyIncomingICR();
 updatePortraitOther();
 updateProgress();
 </script>
